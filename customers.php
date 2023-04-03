@@ -3,7 +3,7 @@
 // require 'Customer.php';
 if(isset($_POST['submit'])){
 
-  $data = $_POST; //test
+  $data = $_POST;
    $errors= array();
   
    // Validation 
