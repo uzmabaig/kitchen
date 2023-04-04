@@ -1,6 +1,6 @@
 <?php
 
-// require 'Customer.php';
+require 'Customer.php';
 if(isset($_POST['submit'])){
 
   $data = $_POST;
@@ -12,27 +12,12 @@ if(isset($_POST['submit'])){
     exit;
     }
 
-  //  if($data['dob'] == ''){
-  //     echo 'Please enter your date of birth';
-  //    return false;
-   
-      function validateAge($dob, $age = 18)
-      {
-          // $birthday can be UNIX_TIMESTAMP or just a string-date.
-          if(is_string($dob)) {
-            $dob = strtotime($dob);
-          }
-      
-          // check
-          // 31536000 is the number of seconds in a 365 days year.
-          if(time() - $dob < $age * 31536000)  {
-              return false;
-          }
-      
-          return true;
-      }
+   if($data['date_of_birth'] == ''){
+      echo 'Please enter your date of birth';
+     return false;
+    }
 
-     if($data['email'] == ''){
+    if($data['email'] == ''){
       echo 'Please enter valid email';
       return false;
      }
@@ -40,10 +25,7 @@ if(isset($_POST['submit'])){
     if($data['password'] == ''){
       echo 'Please enter valid password';
       return false;
-    }elseif
-    (onlyaphabets($data['password'])){
-      echo 'password except in alphabets only';
-      return false;
+   
     }elseif
       (strlen($data['password']) < 8 ){
       echo 'password should be 8 characters';
@@ -58,7 +40,7 @@ if(isset($_POST['submit'])){
       'password' => $data['password'],
       'date'=> date('y-m-d')
       ];
-     
+      
       //  $data = ['name'=> $data['name'],'dob' =>$data['dob'], 'email' =>$data['email'],'password' => $data['password']];
       //  $jsondata = json_encode($data);
 
@@ -67,9 +49,9 @@ if(isset($_POST['submit'])){
       // fwrite($myfile,$jsondata);
       // fclose($myfile);
       
-      // $customer = new customer();
-      // $this->add($data);
-    }
+      $customer = new customer();
+      $customer->add($data);
+    };
  
 
         
