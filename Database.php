@@ -21,16 +21,9 @@ class Database {
     
         public function save($data){
             $con = $this->connect();
-            $sql = "INSERT into customers values {null,'{$data['name']}','{$data['date_of_birth']}','{$data['email']}','{$data['password']}','{$data['date']}'}";
+            $sql = "INSERT into customers values {null,'{$data['name']}','{$data['date_of_birth']}','{$data['email']}','{$data['password']}','{['date']}'}";
             $result = $con->query($sql);
             return $result;
         }
 }
-
-
-
-
-
-
-
-    ?>
+ ?>
