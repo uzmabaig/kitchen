@@ -19,11 +19,21 @@ class Database {
         return $conn;
     }
     
-        public function save($data){
+        public function customers_save($data){
+            
             $con = $this->connect();
-            $sql = "INSERT into customers values {null,'{$data['name']}','{$data['date_of_birth']}','{$data['email']}','{$data['password']}','{['date']}'}";
+            $sql = "INSERT into customers values (null,'{$data['name']}','{$data['date_of_birth']}','{$data['email']}','{$data['password']}','{$data['date']}')";
             $result = $con->query($sql);
             return $result;
         }
+
+        public function products_save($data){
+            
+            $con = $this->connect();
+            $sql = "INSERT into products values (null,'{$data['name']}','{$data['description']}','{$data['price']}','{$data['date']}')";
+            $result = $con->query($sql);
+            return $result;
+        }
+
 }
  ?>

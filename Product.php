@@ -2,9 +2,9 @@
 
 include "Database.php";
 
-class Customer extends Database {
+class Product extends Database {
     public function add($data){
-        $this->customers_save($data);
+        $this->products_save($data);
     }
 
 

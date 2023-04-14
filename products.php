@@ -1,4 +1,5 @@
 <?php
+require 'Product.php';
 if(isset($_POST['submit'])){
 
     $data = $_POST;
@@ -31,6 +32,15 @@ if(isset($_POST['submit'])){
          else{
         echo "success";
        }
+       $data = [
+        'name' => $data['name'],
+        'description' => $data['description'],
+        'price' => $data['price'],
+       'date'=> date('y-m-d')
+        ];
+
+        $product = new product();
+        $product->add($data);
 }    
 ?>
 <!DOCTYPE html>

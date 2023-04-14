@@ -1,66 +1,10 @@
-<?php
 
-require 'Customer.php';
-if(isset($_POST['submit'])){
 
-  $data = $_POST;
-   $errors= array();
-  
-   // Validation 
-  if($data['name'] == '' || !preg_match('/[a-zA-Z ]/',$data['name'])){
-        echo 'Please enter valid name',
-    exit;
-    }
-
-   if($data['date_of_birth'] == ''){
-      echo 'Please enter your date of birth';
-     return false;
-    }
-
-    if($data['email'] == ''){
-      echo 'Please enter valid email';
-      return false;
-     }
-
-    if($data['password'] == ''){
-      echo 'Please enter valid password';
-      return false;
-   
-    }elseif
-      (strlen($data['password']) < 8 ){
-      echo 'password should be 8 characters';
-      return false;
-     };
-
-     // Data Save Process
-     $data = [
-      'name' => $data['name'],
-      'date_of_birth' => $data['date_of_birth'],
-      'email' => $data['email'],
-      'password' => $data['password'],
-      'date'=> date('y-m-d')
-      ];
-    
-      //  $data = ['name'=> $data['name'],'dob' =>$data['dob'], 'email' =>$data['email'],'password' => $data['password']];
-      //  $jsondata = json_encode($data);
-
-      //SAve Data
-      // $myfile = fopen("customersfile.json", "w") or die("Unable to open file!");
-      // fwrite($myfile,$jsondata);
-      // fclose($myfile);
-      
-      $customer = new customer();
-      $customer->add($data);
-    };
- 
-
-        
-?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-<title>Customer Register</title>
+<title>Stock</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/custom.css">
     <!-- <script src="js/bootstrap.js"></script> -->
