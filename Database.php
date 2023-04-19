@@ -17,8 +17,7 @@ class Database {
         }
         // echo "Connected successfully";
         return $conn;
-    }
-    
+      }
         public function customers_save($data){
             
             $con = $this->connect();
@@ -26,14 +25,22 @@ class Database {
             $result = $con->query($sql);
             return $result;
         }
-
-        public function products_save($data){
+         public function products_save($data){
             
             $con = $this->connect();
             $sql = "INSERT into products values (null,'{$data['name']}','{$data['description']}','{$data['price']}','{$data['date']}')";
             $result = $con->query($sql);
             return $result;
         }
+        public function products_get(){
+            
+            $con = $this->connect();
+            $sql = "select * from products";
+            $result = $con->query($sql);
+            $res = $result->fetch_all(MYSQLI_ASSOC);
+            return $res;
+        }
+
 
 }
  ?>
