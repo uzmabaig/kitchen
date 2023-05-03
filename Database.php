@@ -1,5 +1,5 @@
 <?php
-class Database {
+class Database { 
 
     const HOST = 'localhost';
     const USERNAME = 'root';
@@ -41,6 +41,15 @@ class Database {
             return $res;
         }
 
-
-}
+        public function products_productinfo(){
+            
+            $con = $this->connect();
+            $sql = "select * from products";
+            $result = $con->query($sql);
+            $resultCheck = mysqli_num_rows($result);
+            return $resultCheck;
+           
+           
+        }
+   }
  ?>

@@ -1,16 +1,19 @@
 <?php
 require "Product.php";
 
-$product = new product();
-$allproducts = $product->get();
+
+
+
+
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-<title>Productlist</title>
+<title>Product detail</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/custom.css">
     <!-- <script src="js/bootstrap.js"></script> -->
@@ -27,16 +30,20 @@ $allproducts = $product->get();
 <body>
 <div class="container">
    <div class="row mt-4">
-    <?php foreach($allproducts as $product) { ?>
+   <?php    if ($resultCheck > 0 ) {
+          while ($row = mysqli_fetch_assoc($result)) {
+         
+            ?>
    <div class="card" style="width: 18rem;">
    <div class="card-body">
-    <h5 class="card-title"><?php echo $product['name'] ?></h5>
-    <p class="card-text"><?php echo $product['description'] ?></p>
-    <a href="http://localhost/kitchen/productdetail.php" class="btn btn-primary"><?php echo $product['price'] ?></a>
+    <h5 class="card-title"><?php echo $row['name'] ?></h5>
+    <p class="card-text"><?php echo $row['description']?></p>
+    <a href="#" class="btn btn-primary"><?php echo $row['price']?></a>
   </div>
 </div>
-<?php } ?>
-        </div>  
+<?php } 
+}?>
+        </div>
       </div>
 </body>
 <script>

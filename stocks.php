@@ -24,21 +24,10 @@
    <div class="mt-4 mb-4 col-md-10 offset-3">
    <form action="customers.php" method="post" id="form">
    <div class="row col-md-6 mt-4">
-        <label for ="name">Fullname:
-        <input type="text" id="name" name="name" class="form-control">
+        <label for ="qty">Quantity:
+        <input type="text" id="qty" name="qty" class="form-control">
         </div>
-        <div class="row col-md-6">
-        <label for ="date_of_birth">Date of Birth:
-        <input type="date" class="form-control" id="date_of_birth" name="date_of_birth">
-        </div>
-        <div class="row col-md-6">
-        <label for ="email">Email:
-        <input type="email" id="email" name="email" class="form-control"> 
-        </div>
-        <div class="row col-md-6">
-        <label for ="password">Password:
-        <input type="password" id="password" name="password" class="form-control"> 
-        </div>
+       
         <br>
         <div class="row col-md-4 offset-1">
         <input type="submit" class= "btn btn-secondary" value='Submit' name='submit' id="submit">
