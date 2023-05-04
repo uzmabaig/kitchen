@@ -1,7 +1,7 @@
 <?php
 require "Product.php";
 
-$product = new product();
+$product = new Product();
 $allproducts = $product->get();
 
 ?>
@@ -32,7 +32,8 @@ $allproducts = $product->get();
    <div class="card-body">
     <h5 class="card-title"><?php echo $product['name'] ?></h5>
     <p class="card-text"><?php echo $product['description'] ?></p>
-    <a href="http://localhost/kitchen/productdetail.php" class="btn btn-primary"><?php echo $product['price'] ?></a>
+    <a href="http://localhost/kitchen/productdetail.php?id=<?=$product['product_id']?>" class="btn btn-primary"><?php echo $product['price'] ?></a>
+    <a href="http://localhost/kitchen/productdelete.php?name=<?=$product['name']?>"class="btn btn-danger">Delete</a>
   </div>
 </div>
 <?php } ?>

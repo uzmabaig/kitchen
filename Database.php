@@ -41,15 +41,16 @@ class Database {
             return $res;
         }
 
-        public function products_productinfo(){
+        public function products_productinfo($id){
             
             $con = $this->connect();
-            $sql = "select * from products";
+            $sql = "select * from products Where product_id= {$id}";
             $result = $con->query($sql);
-            $resultCheck = mysqli_num_rows($result);
-            return $resultCheck;
-           
-           
+            $res = $result->fetch_assoc();
+            return $res;
+        
         }
+     
+
    }
  ?>

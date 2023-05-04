@@ -9,9 +9,11 @@ class Product extends Database {
     public function get(){
         return $this->products_get();
     }
-    public function productinfo(){
-        return $this->products_productinfo(); 
+    public function get_product_by_id($id){
+        return $this->products_productinfo($id); 
 }
+
+
 }
 
 ?>

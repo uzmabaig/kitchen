@@ -1,20 +1,8 @@
-<?php
-require "Product.php";
-
-$product = new Product();
-$product_id = $_GET['id'];
-$product_details = $product->get_product_by_id($product_id);
-
-
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-<title>Product detail</title>
+<title>Product Delete</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/custom.css">
     <!-- <script src="js/bootstrap.js"></script> -->
@@ -31,17 +19,18 @@ $product_details = $product->get_product_by_id($product_id);
 <body>
 <div class="container">
    <div class="row mt-4">
-   
-   <div class="card" style="width: 18rem;">
+ 
+   <div class="card" style="width: 20rem;">
    <div class="card-body">
-    <h5 class="card-title"><?php echo $product_details['name'] ?></h5>
-    <p class="card-text"><?php echo $product_details['description']?></p>
-    <a href="#" class="btn btn-primary"><?php echo $product_details['price']?></a>
-    <a href="http://localhost/kitchen/productdelete.php?name=<?=$product_details['name']?>"class="btn btn-danger">Delete</a>
+   <?php
+      echo "Product has been delete!";
+     ?>
+  
   </div>
 </div>
- </div>
+   </div>  
       </div>
 </body>
-</html> 
 
+
+</html> 
