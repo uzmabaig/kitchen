@@ -48,9 +48,16 @@ class Database {
             $result = $con->query($sql);
             $res = $result->fetch_assoc();
             return $res;
-        
         }
-     
+       
+        public function products_productdel($id){
+            
+            $con = $this->connect();
+            $sql = "Delete from products Where product_id= {$id}";
+            $result = $con->query($sql);
+            $res = $result->fetch_assoc();
+            return $res;
+        }
+}
 
-   }
  ?>

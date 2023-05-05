@@ -37,7 +37,7 @@ $product_details = $product->get_product_by_id($product_id);
     <h5 class="card-title"><?php echo $product_details['name'] ?></h5>
     <p class="card-text"><?php echo $product_details['description']?></p>
     <a href="#" class="btn btn-primary"><?php echo $product_details['price']?></a>
-    <a href="http://localhost/kitchen/productdelete.php?name=<?=$product_details['name']?>"class="btn btn-danger">Delete</a>
+    <a href="http://localhost/kitchen/productdelete.php?id=<?=$product_details['product_id']?>"class="btn btn-danger">Delete</a>
   </div>
 </div>
  </div>

@@ -1,3 +1,12 @@
+<?php
+require "Product.php";
+
+$product = new Product();
+$product_id = $_GET['id'];
+$product_delete = $product->delete_product_by_id($product_id);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

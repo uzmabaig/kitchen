@@ -11,7 +11,10 @@ class Product extends Database {
     }
     public function get_product_by_id($id){
         return $this->products_productinfo($id); 
-}
+    }
+    public function delete_product_by_id($id){
+        return $this->products_productdel($id); 
+    }
 
 
 }
