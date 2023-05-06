@@ -55,8 +55,7 @@ class Database {
             $con = $this->connect();
             $sql = "delete from products Where product_id= {$id}";
             $result = $con->query($sql);
-            $res = $result->fetch_assoc();
-            return $res;
+            return $result;
         }
 }
 

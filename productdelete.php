@@ -5,6 +5,16 @@ $product = new Product();
 $product_id = $_GET['id'];
 $product_delete = $product->delete_product_by_id($product_id);
 
+if ($product_delete === TRUE) {
+    $result = "Record deleted successfully";
+  } else {
+    $result = "Error deleting record: " . $conn->error;
+  }
+  
+ 
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -31,8 +41,8 @@ $product_delete = $product->delete_product_by_id($product_id);
  
    <div class="card" style="width: 20rem;">
    <div class="card-body">
-   <?php
-      echo "Product has been delete!";
+   <?= $result
+     
      ?>
   
   </div>
