@@ -4,9 +4,15 @@ require "Product.php";
 $product = new Product();
 $product_id = $_GET['id'];
 $product_details = $product->get_product_by_id($product_id);
+// $product_update = $product->get_product_by_id($product_id);
 
 
-
+// if ($product_update  === TRUE) {
+//     $result = "Record updated successfully";
+//   } else {
+//     $result = "Error updating record: " . $conn->error;
+//   }
+//   echo $result;
 ?>
 
 
@@ -36,7 +42,7 @@ $product_details = $product->get_product_by_id($product_id);
    <form action="products.php" method="post" id="form">
    <div class="row col-md-8 mt-4">
         <label for ="name">Fullname:
-        <input type="text" id="name" name="name"class="form-control"placeholder = <?php echo $product_details['name']?> >
+        <input type="text" id="name" name="name"class="form-control" value= <?php echo $product_details['name']?> >
         </div>
         <div class="row col-md-8">
         <label for ="description">Description:
@@ -44,12 +50,14 @@ $product_details = $product->get_product_by_id($product_id);
         </div>
         <div class="row col-md-8">
         <label for ="price">Price:
-        <input type="number" id="price" name="price" class="form-control" placeholder = <?php echo $product_details['price']?>> 
+        <input type="number" id="price" name="price" class="form-control" value = <?php echo $product_details['price']?>> 
         </div>
         <br>
         <div class="row col-md-4 offset-2">
         <input type="submit" class= "btn btn-primary" value='update' name='submit' id="submit">
         </div>
+
+     
         </form>
 </div>
    </div>

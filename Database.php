@@ -57,6 +57,14 @@ class Database {
             $result = $con->query($sql);
             return $result;
         }
+
+        // public function products_productupdate($id){
+            
+        //     $con = $this->connect();
+        //     $sql = "UPDATE products SET price = 50000 WHERE id= 19";
+        //     $result = $con->query($sql);
+        //     return $result;
+        // }
 }
 
  ?>
