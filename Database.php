@@ -58,13 +58,15 @@ class Database {
             return $result;
         }
 
-        // public function products_productupdate($id){
+         public function products_productupdate($id){
             
-        //     $con = $this->connect();
-        //     $sql = "UPDATE products SET price = 50000 WHERE id= 19";
-        //     $result = $con->query($sql);
-        //     return $result;
-        // }
+            $con = $this->connect();
+           
+            $sql = "UPDATE products SET $array Where product_id= {$id}";
+            $result = $con->query($sql);
+            return $result;
+         }
 }
 
  ?>
+ 

@@ -10,7 +10,7 @@ $product_details = $product->get_product_by_id($product_id);
 // if ($product_update  === TRUE) {
 //     $result = "Record updated successfully";
 //   } else {
-//     $result = "Error updating record: " . $conn->error;
+//     $result = "Error updating record: ";
 //   }
 //   echo $result;
 ?>
