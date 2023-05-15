@@ -61,7 +61,7 @@ class Database {
          public function products_productupdate($id,$details){
             
             $con = $this->connect();
-            $sql = "UPDATE products SET name = {$details['name']} , description = {$details['description']} , price = {$details['price']} WHERE product_id= {$id}";
+            $sql = "UPDATE products SET name ='".$details['name']."' , description = '".$details['description']."' , price = {$details['price']} WHERE product_id= {$id}";
             $result = $con->query($sql);
             return $result;
          }

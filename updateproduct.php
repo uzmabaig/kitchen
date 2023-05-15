@@ -9,7 +9,7 @@ if(isset($_GET['id'])){
 
 if(isset($_POST['submit'])){
     $product = new Product();
-    $product_id = $_POST['id'];
+    $product_id = $_POST['product_id'];
     $product_details = $_POST;
     $product_update = $product->update_product_by_id($product_id,$product_details);
    
@@ -49,18 +49,18 @@ if(isset($_POST['submit'])){
    <div class="mt-4 mb-4 col-md-10 offset-2">
    <form action="updateproduct.php" method="POST" id="form">
    <div class="row col-md-8 mt-4">
-        <label for ="name">Fullname:
-        <input type="text" id="name" name="name"class="form-control" value= "<?= $product_details['name']?>">
+        <label for ="name">Fullname:</label>
+        <input type="text" id="name" name="name"class="form-control" value="<?= $product_details['name']?>">
         </div>
         <div class="row col-md-8">
-        <label for ="description">Description:
-        <textarea class="form-control" type="text" id="description" name="description" rows ="3"><?= $product_details['description']?></textarea>
+        <label for ="description">Description:</label>
+        <textarea class="form-control" type="text" id="description" name="description" rows="3"><?= $product_details['description']?></textarea>
         </div>
         <div class="row col-md-8">
-        <label for ="price">Price:
+        <label for ="price">Price:</label>
         <input type="number" id="price" name="price" class="form-control" value="<?= $product_details['price']?>"> 
         </div>
-        <input type="hidden" id="id" name="id" value="<?= $product_details['product_id']?>">
+        <input type="hidden" name="product_id" value='<?= $product_details["product_id"]?>'>
         </br>
         <div class="row col-md-4 offset-2">
         <input type="submit" class= "btn btn-primary" value='update' name='submit' id="submit">
