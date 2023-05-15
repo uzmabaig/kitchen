@@ -1,20 +1,28 @@
 <?php
 require "Product.php";
 
-$product = new Product();
-$product_id = $_GET['id'];
-$product_details = $product->get_product_by_id($product_id);
-// $product_update = $product->get_product_by_id($product_id);
+if(isset($_GET['id'])){
+    $product = new Product();
+    $product_id = $_GET['id'];
+    $product_details = $product->get_product_by_id($product_id);
+ }
 
+if(isset($_POST['submit'])){
+    $product = new Product();
+    $product_id = $_POST['id'];
+    $product_details = $_POST;
+    $product_update = $product->update_product_by_id($product_id,$product_details);
+   
+    //  if ($product_update  === TRUE) {
+    // $result = "Record updated successfully";
+    // } else {
+    // $result = "Error updating record:";
+    // }
+  
+};
 
-// if ($product_update  === TRUE) {
-//     $result = "Record updated successfully";
-//   } else {
-//     $result = "Error updating record: ";
-//   }
-//   echo $result;
 ?>
-
+  
 
 <!DOCTYPE html>
 <html lang="en">
@@ -39,26 +47,26 @@ $product_details = $product->get_product_by_id($product_id);
    <div class="row mt-4">
 
    <div class="mt-4 mb-4 col-md-10 offset-2">
-   <form action="products.php" method="post" id="form">
+   <form action="updateproduct.php" method="POST" id="form">
    <div class="row col-md-8 mt-4">
         <label for ="name">Fullname:
-        <input type="text" id="name" name="name"class="form-control" value= <?php echo $product_details['name']?> >
+        <input type="text" id="name" name="name"class="form-control" value= "<?= $product_details['name']?>">
         </div>
         <div class="row col-md-8">
         <label for ="description">Description:
-        <textarea class="form-control" type="text" id="description" name="description" rows ="3" ><?php echo $product_details["description"]?></textarea>
+        <textarea class="form-control" type="text" id="description" name="description" rows ="3"><?= $product_details['description']?></textarea>
         </div>
         <div class="row col-md-8">
         <label for ="price">Price:
-        <input type="number" id="price" name="price" class="form-control" value = <?php echo $product_details['price']?>> 
+        <input type="number" id="price" name="price" class="form-control" value="<?= $product_details['price']?>"> 
         </div>
-        <br>
+        <input type="hidden" id="id" name="id" value="<?= $product_details['product_id']?>">
+        </br>
         <div class="row col-md-4 offset-2">
         <input type="submit" class= "btn btn-primary" value='update' name='submit' id="submit">
         </div>
-
      
-        </form>
+       </form>
 </div>
    </div>
       </div>

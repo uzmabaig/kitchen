@@ -16,8 +16,8 @@ class Product extends Database {
         return $this->products_productdel($id); 
     }
 
-    public function update_product_by_id($id){
-        return $this->products_productupdate($id); 
+    public function update_product_by_id($id,$details){
+        return $this->products_productupdate($id,$details); 
     }
 
 }

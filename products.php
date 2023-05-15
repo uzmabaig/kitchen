@@ -65,7 +65,7 @@ if(isset($_POST['submit'])){
 <div class="container">
    <div class="row mt-4">
    <div class="mt-4 mb-4 col-md-10 offset-2">
-   <form action="products.php" method="post" id="form">
+   <form action="products.php" method="POST" id="form">
    <div class="row col-md-8 mt-4">
         <label for ="name">Fullname:
         <input type="text" id="name" name="name"class="form-control" >
