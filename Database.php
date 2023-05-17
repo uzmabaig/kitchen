@@ -47,14 +47,14 @@ class Database {
             $sql = "select * from products Where product_id= {$id}";
             $result = $con->query($sql);
             $res = $result->fetch_assoc();
-            return $res;
+           return $res;
         }
        
         public function products_productdel($id){
             
             $con = $this->connect();
             $sql = "delete from products Where product_id= {$id}";
-            $result = $con->query($sql);
+             $result = $con->query($sql);
             return $result;
         }
 
@@ -64,8 +64,11 @@ class Database {
             $sql = "UPDATE products SET name ='".$details['name']."' , description = '".$details['description']."' , price = {$details['price']} WHERE product_id= {$id}";
             $result = $con->query($sql);
             return $result;
-         }
-}
+             }
+           
+            
+        }        
+
 
  ?>
  

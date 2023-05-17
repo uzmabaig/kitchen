@@ -29,9 +29,7 @@ if(isset($_POST['submit'])){
          return false;
          } 
 
-         else{
-        echo "success";
-       }
+   
        $data = [
         'name' => $data['name'],
         'description' => $data['description'],
@@ -41,7 +39,7 @@ if(isset($_POST['submit'])){
 
         $product = new product();
         $product->add($data);
-}    
+   }    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,6 +62,13 @@ if(isset($_POST['submit'])){
 <body>
 <div class="container">
    <div class="row mt-4">
+   <?php
+   $msg = "";
+     if($msg != $product){ ?>
+      <div class="alert alert-success" role="alert">
+          <?= "Add new product successfully!" ?>
+      </div>
+ <?php  }  ?>
    <div class="mt-4 mb-4 col-md-10 offset-2">
    <form action="products.php" method="POST" id="form">
    <div class="row col-md-8 mt-4">

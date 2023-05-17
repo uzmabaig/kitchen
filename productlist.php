@@ -25,24 +25,22 @@ $allproducts = $product->get();
        
 </head>
 <body>
+
 <div class="container">
    <div class="row mt-4">
-    <?php foreach($allproducts as $product) { ?>
-   <div class="card" style="width: 18rem;">
+  
+   <?php foreach($allproducts as $product) { ?>
+    <div class="card" style="width: 18rem;">
    <div class="card-body">
     <h5 class="card-title"><?php echo $product['name'] ?></h5>
     <p class="card-text"><?php echo $product['description'] ?></p>
     <a href="http://localhost/kitchen/productdetail.php?id=<?=$product['product_id']?>" class="btn btn-primary"><?php echo $product['price'] ?></a>
     <a href="http://localhost/kitchen/updateproduct.php?id=<?=$product['product_id']?>"class="btn btn-info">Update</a>
     <a href="http://localhost/kitchen/productdelete.php?id=<?=$product['product_id']?>"class="btn btn-danger">Delete</a>
-
+ </div>
   </div>
-</div>
 <?php } ?>
+</div>
         </div>  
-      </div>
-</body>
-<script>
-   <script/>
-
+  </body>
 </html> 
