@@ -1,5 +1,7 @@
 <?php
 require 'Product.php';
+
+$msg = ""; 
 if(isset($_POST['submit'])){
 
     $data = $_POST;
@@ -29,17 +31,28 @@ if(isset($_POST['submit'])){
          return false;
          } 
 
-   
-       $data = [
-        'name' => $data['name'],
-        'description' => $data['description'],
-        'price' => $data['price'],
-       'date'=> date('y-m-d')
+      $data = [
+         'name' => $data['name'],
+         'description' => $data['description'],
+         'price' => $data['price'],
+         'date'=> date('y-m-d')
         ];
 
         $product = new product();
         $product->add($data);
-   }    
+     
+    
+     if($product == false || $product == null){
+          $msg = "Save product failed!";
+
+         }else{
+        $msg = "Save product successfully!";
+         }
+        
+   }
+  
+  
+   
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,12 +76,18 @@ if(isset($_POST['submit'])){
 <div class="container">
    <div class="row mt-4">
    <?php
-   $msg = "";
-     if($msg != $product){ ?>
+      if($msg !== ""){ ?>
       <div class="alert alert-success" role="alert">
-          <?= "Add new product successfully!" ?>
+          <?= $msg ?>
       </div>
- <?php  }  ?>
+
+<?php}
+      else  
+      { ?>
+        <div class="alert alert-danger" role="alert">
+        </div>
+           <?php }?> 
+
    <div class="mt-4 mb-4 col-md-10 offset-2">
    <form action="products.php" method="POST" id="form">
    <div class="row col-md-8 mt-4">

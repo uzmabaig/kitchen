@@ -1,11 +1,11 @@
 <?php
 require "Product.php";
 
+$msg = "";
 if(isset($_GET['id'])){
     $product = new Product();
     $product_id = $_GET['id'];
     $product_details = $product->get_product_by_id($product_id);
-    
  }
 
 if(isset($_POST['submit'])){
@@ -13,6 +13,13 @@ if(isset($_POST['submit'])){
     $product_id = $_POST['product_id'];
     $product_details = $_POST;
     $product_update = $product->update_product_by_id($product_id,$product_details);
+
+    if($product_update == false){
+       $msg = "product update failes!";
+
+    }else{
+       $msg = "product updated successfully!";
+    }
     
   }  
   
@@ -41,13 +48,19 @@ if(isset($_POST['submit'])){
 <body>
 <div class="container">
    <div class="row mt-4">
+
    <?php
-   $msg = "";
-     if($msg != $product_update){ ?>
-      <div class="alert alert-primary" role="alert">
-          <?= "Product updated successfully!" ?>
+      if($msg !== ""){ ?>
+      <div class="alert alert-success" role="alert">
+          <?= $msg ?>
       </div>
- <?php  }  ?>
+
+<?php} 
+      else  { ?>
+        <div class="alert alert-danger" role="alert">
+        
+           </div>
+        <?php  }?> 
 
    <div class="mt-4 mb-4 col-md-10 offset-2">
    <form action="updateproduct.php" method="POST" id="form">
@@ -75,3 +88,4 @@ if(isset($_POST['submit'])){
       </div>
 </body>
 </html> 
+

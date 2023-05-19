@@ -5,7 +5,13 @@ $product = new Product();
 $product_id = $_GET['id'];
 $product_details = $product->get_product_by_id($product_id);
 
+$msg = "";
+if($product_details !== false || $product_details !== null){
+    $msg = "Product detailed successfully show!";
 
+ }else{
+     $msg = "Product detail failed!";
+ }
 
 ?>
 
@@ -31,7 +37,20 @@ $product_details = $product->get_product_by_id($product_id);
 <body>
 <div class="container">
    <div class="row mt-4">
-   
+
+   <?php
+    if($msg !== ""){ ?>
+      <div class="alert alert-success" role="alert">
+          <?= $msg ?>
+      </div>
+
+<?php}
+else 
+     { ?>
+        <div class="alert alert-danger" role="alert">
+            </div>
+        <?php }?>
+
    <div class="card" style="width: 18rem;">
    <div class="card-body">
   

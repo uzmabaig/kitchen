@@ -5,6 +5,14 @@ $product = new Product();
 $product_id = $_GET['id'];
 $product_delete = $product->delete_product_by_id($product_id);
 
+$msg = "";
+if($product_delete == false || $product_delete == null){
+    $msg = "Product delete failed!";
+
+ }else{
+    $msg = "Delete product successfully!";
+ }
+
 ?>
 
 <!DOCTYPE html>
@@ -31,12 +39,17 @@ $product_delete = $product->delete_product_by_id($product_id);
 <!-- <div class="card" style="width: 20rem;">
    <div class="card-body"> -->
    <?php
-   $msg = "";
-     if($msg != $product_delete){ ?>
-      <div class="alert alert-danger" role="alert">
-          <?= "Delete product successfully!" ?>
+      if($msg !== ""){ ?>
+      <div class="alert alert-success" role="alert">
+          <?= $msg ?>
       </div>
- <?php  }  ?>
+
+<?php}
+      else {?>
+        <div class="alert alert-danger" role="alert">
+           
+        </div>
+           <?php }?>
   
    </div>
 </div>
