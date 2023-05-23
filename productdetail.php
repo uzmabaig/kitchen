@@ -7,11 +7,11 @@ $product_details = $product->get_product_by_id($product_id);
 
 $msg = "";
 if($product_details !== false || $product_details !== null){
-    $msg = "Product detailed successfully show!";
-
- }else{
-     $msg = "Product detail failed!";
- }
+    $msg ='<div class="alert alert-success">Product detailed successfully show!</div>';
+   
+}else{
+    $msg ='<div class="alert alert-danger">Product detail failed!</div>';
+  }
 
 ?>
 
@@ -40,18 +40,10 @@ if($product_details !== false || $product_details !== null){
 
    <?php
     if($msg !== ""){ ?>
-      <div class="alert alert-success" role="alert">
-          <?= $msg ?>
-      </div>
-
-<?php}
-else 
-     { ?>
-        <div class="alert alert-danger" role="alert">
-            </div>
-        <?php }?>
-
-   <div class="card" style="width: 18rem;">
+      <?= $msg ?>
+      <?php } ?>
+        
+<div class="card" style="width: 18rem;">
    <div class="card-body">
   
     <h5 class="card-title"><?php echo $product_details['name'] ?></h5>

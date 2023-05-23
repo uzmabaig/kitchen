@@ -1,8 +1,15 @@
 <?php
 require "Product.php";
 
+
 $product = new Product();
 $allproducts = $product->get();
+
+
+
+
+
+
 
 ?>
 

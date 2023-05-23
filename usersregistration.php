@@ -1,5 +1,5 @@
 <?php
-require 'Product.php';
+require 'User.php';
 
 $msg = ""; 
 if(isset($_POST['submit'])){
@@ -12,37 +12,44 @@ if(isset($_POST['submit'])){
           echo 'Please enter valid name',
       exit;
       }
-      if($data['description'] == ''){
-        echo 'Please enter the product description';
-        return false;
-                
-      }elseif
-      (str_word_count($data['description']) > 100 ){
-      echo 'you can use only 100 words to describe product in detail';
-      return false;
-       } 
 
-       if($data['price'] == ''){
-        echo 'Please enter the product price';
+      if($data['email'] == ''){
+        echo 'Please enter your valid email';
         return false;
-        }elseif
-         ($data['price'] >= 100000){
-         echo 'your price of product should be under 5 digits';
-         return false;
-         } 
+      }
+
+       if($data['phone_number'] == ''){
+        echo 'Please enter the valid phone_number';
+        return false;
+      }
+
+        if($data['password'] == ''){
+            echo 'Please enter valid password';
+            die();
+      }elseif
+          (!preg_match('/[a-zA-Z ]/',$data['password'])){
+            echo 'except in alphabets only';
+            die();
+       }elseif
+           (strlen($data['password']) < 8 ){
+            echo 'password should be 8 characters';
+            die();
+        }
 
       $data = [
          'name' => $data['name'],
-         'description' => $data['description'],
-         'price' => $data['price'],
+         'email' => $data['email'],
+         'phone_number' => $data['phone_number'],
+         'password' => $data['password'],
          'date'=> date('y-m-d')
         ];
 
-        $product = new product();
-        $add_products= $product->add($data);
+        $user= new user();
+        $add_info = $user->add($data);
+
      
     
-     if($add_products == false){
+     if($add_info == false){
           $msg = '<div class="alert alert-danger">Save product failed!</div>';
          
       }else{
@@ -56,7 +63,8 @@ if(isset($_POST['submit'])){
 <html lang="en">
 
 <head>
-<title>Product</title>
+<title>Registration Page
+</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/custom.css">
     <!-- <script src="js/bootstrap.js"></script> -->
@@ -78,23 +86,27 @@ if(isset($_POST['submit'])){
          <?= $msg ?>
     <?php } ?>
         
-<div class="mt-4 mb-4 col-md-10 offset-2">
-   <form action="products.php" method="POST" id="form">
-   <div class="row col-md-8 mt-4">
+    <div class=" mt-4 mb-4 col-md-6 offset-2" style="background-color:lightblue" >
+   <form action="usersregistration.php" method="POST" id="form">
+   <div class="row col-md-8 mt-4 offset-2">
         <label for ="name">Fullname:
         <input type="text" id="name" name="name"class="form-control" >
         </div>
-        <div class="row col-md-8">
-        <label for ="description">Description:
-        <textarea class="form-control" type="text" id="description" name="description" rows ="5"></textarea>
+        <div class="row col-md-8 offset-2">
+        <label for ="email">Email:
+        <input class="form-control" type="email" id="email" name="email">
         </div>
-        <div class="row col-md-8">
-        <label for ="price">Price:
-        <input type="number" id="price" name="price" class="form-control"> 
+        <div class="row col-md-8 offset-2">
+        <label for ="phone_number">Phone_number:
+        <input type="text" id="phone_number" name="phone_number" class="form-control"> 
+        </div>
+        <div class="row col-md-8 offset-2">
+        <label for ="password">Password:
+        <input type="password" id="password" name="password" class="form-control"> 
         </div>
         <br>
-        <div class="row col-md-4 offset-2">
-        <input type="submit" class= "btn btn-secondary" value='submit' name='submit' id="submit">
+        <div class="row col-md-6 mb-4 offset-3">
+        <input type="submit" class= "btn btn-primary" value='submit' name='submit' id="submit">
         </div>
         </form>
 </div>

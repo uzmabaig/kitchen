@@ -67,7 +67,22 @@ class Database {
             return $result;
              }
            
+             public function usersinfo_save($data){
             
+                $con = $this->connect();
+                $sql = "INSERT into users values (null,'{$data['name']}','{$data['email']}','{$data['phone_number']}','{$data['password']}','{$data['date']}')";
+                $result = $con->query($sql);
+                return $result;
+            }
+
+            public function usersinfo_get($email,$password){  
+
+                $con = $this->connect();
+                $sql = "select * from users where email = '{$email}' and  password = '{$password}'";
+                $result = $con->query($sql);
+                $res = $result->fetch_all(MYSQLI_ASSOC);
+                return $res;
+            }
         }        
 
 

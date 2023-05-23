@@ -7,10 +7,11 @@ $product_delete = $product->delete_product_by_id($product_id);
 
 $msg = "";
 if($product_delete == false || $product_delete == null){
-    $msg = "Product delete failed!";
-
- }else{
-    $msg = "Delete product successfully!";
+   $msg ='<div class="alert alert-danger">Product delete failed!</div>';
+    
+}else{
+   $msg ='<div class="alert alert-success">Delete product successfully!</div>';
+    
  }
 
 ?>
@@ -36,25 +37,14 @@ if($product_delete == false || $product_delete == null){
 <body>
 <div class="container">
    <div class="row mt-4">
-<!-- <div class="card" style="width: 20rem;">
-   <div class="card-body"> -->
+
    <?php
       if($msg !== ""){ ?>
-      <div class="alert alert-success" role="alert">
-          <?= $msg ?>
-      </div>
-
-<?php}
-      else {?>
-        <div class="alert alert-danger" role="alert">
-           
-        </div>
-           <?php }?>
-  
+        <?= $msg ?>
+     <?php } ?>
+       
    </div>
 </div>
-   <!-- </div>  
-      </div> -->
 </body> 
 
 

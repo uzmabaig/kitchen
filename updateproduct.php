@@ -15,16 +15,13 @@ if(isset($_POST['submit'])){
     $product_update = $product->update_product_by_id($product_id,$product_details);
 
     if($product_update == false){
-       $msg = "product update failes!";
-
-    }else{
-       $msg = "product updated successfully!";
-    }
-    
-  }  
-  
-
-?>
+       $msg ='<div class="alert alert-danger">product update failes!</div>';
+      
+      }else{
+      $msg ='<div class="alert alert-success">product updated successfully!</div>';
+      }
+     }  
+  ?>
   
 
 <!DOCTYPE html>
@@ -51,18 +48,10 @@ if(isset($_POST['submit'])){
 
    <?php
       if($msg !== ""){ ?>
-      <div class="alert alert-success" role="alert">
-          <?= $msg ?>
-      </div>
-
-<?php} 
-      else  { ?>
-        <div class="alert alert-danger" role="alert">
+           <?= $msg ?>
+      <?php } ?>
         
-           </div>
-        <?php  }?> 
-
-   <div class="mt-4 mb-4 col-md-10 offset-2">
+<div class="mt-4 mb-4 col-md-10 offset-2">
    <form action="updateproduct.php" method="POST" id="form">
    <div class="row col-md-8 mt-4">
         <label for ="name">Fullname:</label>
