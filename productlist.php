@@ -1,15 +1,13 @@
 <?php
+  session_start();
+  $msg = "";
+     if(isset($_SESSION['email'])){
+         $msg ='<div class="alert alert-success">Successfully Login!"</div>';
+        };
+
 require "Product.php";
-
-
 $product = new Product();
 $allproducts = $product->get();
-
-
-
-
-
-
 
 ?>
 
@@ -35,7 +33,10 @@ $allproducts = $product->get();
 
 <div class="container">
    <div class="row mt-4">
-  
+   <?php
+      if($msg !== ""){ ?>
+         <?= $msg ?>
+    <?php } ?>
    <?php foreach($allproducts as $product) { ?>
     <div class="card" style="width: 18rem;">
    <div class="card-body">

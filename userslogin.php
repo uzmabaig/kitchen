@@ -2,14 +2,10 @@
 require 'User.php';
 session_start();
 
- $msg = " ";
+ $msg = "";
  if(isset($_GET['submit'])){
 
         $data = $_GET;
-        $user= new user();
-        $userinfo = $user->get($email,$password);
-        //   print_r ($userinfo);
-
         $inputemail  = $data["inputemail"];
         $inputpassword = $data["inputpassword"];
 
@@ -21,38 +17,21 @@ session_start();
           ($inputpassword == ""){ 
           echo "enter your valid password";
           return false;
-          
-         }elseif
-             ($userinfo['email'] == $inputemail && $userinfo['password'] == $inputpassword){
-            $msg ='<div class="alert alert-success">Successfully Login!</div>';
-          }else{
-            $msg ='<div class="alert alert-danger">Login Failed!</div>';
-           
          }
-      }
+
+          $user= new user();
+          $dbuser = $user->get($inputemail,$inputpassword);
+          
+         if(!is_array($dbuser)){
+            $msg ='<div class="alert alert-danger">Login failed!</div>';
+            //  header("Location:userslogin.php");
+            }
+         else {
+            $_SESSION['email'] =  $data["inputemail"];
+            header("Location:productlist.php");
+         }
+      };
        
-
-      //     if(isset($_SESSION['email'])){
-
-    // $useinfo['email'] == $inputemail && $useinfo['password'] == $inputpassword;
-    
-    //     header("Location:productlist.php");
-    // } else{
-    //      header("Location:userslogin.php");
-    //       }
-
-        
-
-
-// if($alluser['email'] == $inputemail && $alluser['password'] == $inputpassword){
-//     $_SESSION["email"] = $alluser['email'];
-//     header("Location:productlist.php");
-    
- 
-       
-  
-//   unset($_SESSION["email"]);
-    
    ?>
 <head>
 <title>Usersloginform</title>

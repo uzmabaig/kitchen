@@ -78,13 +78,13 @@ class Database {
             public function usersinfo_get($email,$password){  
 
                 $con = $this->connect();
-                $sql = "select * from users where email = '{$email}' and  password = '{$password}'";
+                $sql = "select * from users where email = '{$email}' AND  password = '{$password}'";
                 $result = $con->query($sql);
-                $res = $result->fetch_all(MYSQLI_ASSOC);
+                $res = $result->fetch_assoc();
                 return $res;
             }
         }        
 
-
+        
  ?>
  

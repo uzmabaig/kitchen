@@ -50,10 +50,10 @@ if(isset($_POST['submit'])){
      
     
      if($add_info == false){
-          $msg = '<div class="alert alert-danger">Save product failed!</div>';
+          $msg = '<div class="alert alert-danger">Add user failed!</div>';
          
       }else{
-            $msg ='<div class="alert alert-success">Save product successfully!</div>';
+            $msg ='<div class="alert alert-success">User Successfully Added!</div>';
          }
         
    }
