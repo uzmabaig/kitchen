@@ -83,6 +83,15 @@ class Database {
                 $res = $result->fetch_assoc();
                 return $res;
             }
+
+            public function email_get($email){  
+
+                $con = $this->connect();
+                $sql = "select * from users where email = '{$email}'";
+                $result = $con->query($sql);
+                $res = $result->fetch_assoc();
+                return $res;
+            }
         }        
 
         

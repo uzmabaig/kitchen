@@ -12,6 +12,10 @@ class User extends Database {
     public function get($email,$password){
         return $this->usersinfo_get($email,$password);
     }
+
+    public function get_email_by_check($email){
+      return $this->email_get($email);
+  }
 }
 
 

@@ -36,29 +36,28 @@ if(isset($_POST['submit'])){
             die();
         }
 
-      $data = [
-         'name' => $data['name'],
-         'email' => $data['email'],
-         'phone_number' => $data['phone_number'],
-         'password' => $data['password'],
-         'date'=> date('y-m-d')
-        ];
+        $data = [
+          'name' => $data['name'],
+          'email' => $data['email'],
+          'phone_number' => $data['phone_number'],
+          'password' => $data['password'],
+          'date'=> date('y-m-d')
+         ];
 
-        $user= new user();
-        $add_info = $user->add($data);
-
-     
-    
-     if($add_info == false){
-          $msg = '<div class="alert alert-danger">Add user failed!</div>';
-         
-      }else{
-            $msg ='<div class="alert alert-success">User Successfully Added!</div>';
-         }
+         $email  = $data["email"];
+         $user= new user();
+         $dbuser = $user->get_email_by_check($email); // for email = email
         
-   }
-     
-?>
+         
+        if(is_array($dbuser) && $dbuser['email'] == $email){
+          $msg = '<div class="alert alert-danger">This email is already exist!</div>';
+        } else{
+              $add_info = $user->add($data); // for data save in database
+          $msg ='<div class="alert alert-success">User Successfully Added!</div>';
+          }   
+        };
+       
+       ?>
 <!DOCTYPE html>
 <html lang="en">
 
