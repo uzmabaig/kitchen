@@ -85,7 +85,7 @@ if(isset($_POST['submit'])){
          <?= $msg ?>
     <?php } ?>
         
-    <div class=" mt-4 mb-4 col-md-6 offset-2" style="background-color:lightblue" >
+    <div class=" mt-4 mb-4 col-md-4 offset-4" style="background-color:lightblue" >
    <form action="usersregistration.php" method="POST" id="form">
    <div class="row col-md-8 mt-4 offset-2">
         <label for ="name">Fullname:

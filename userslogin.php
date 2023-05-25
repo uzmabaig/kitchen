@@ -55,7 +55,7 @@ session_start();
       if($msg !== ""){ ?>
          <?= $msg ?>
     <?php } ?>
-   <div class=" mt-4 mb-4 col-md-6 offset-2" style="background-color:lightblue" >
+   <div class=" mt-4 mb-4 col-md-6 offset-3" style="background-color:lightblue" >
    <form action="userslogin.php" method="GET" enctype="multipart/form-data" id="form">
    <div class="row col-md-8 mt-4 offset-2">
    <label for ="inputemail">Email:
