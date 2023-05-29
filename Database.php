@@ -28,7 +28,7 @@ class Database {
          public function products_save($data){
             
             $con = $this->connect();
-            $sql = "INSERT into products values (null,'{$data['name']}','{$data['description']}','{$data['price']}','{$data['date']}')";
+            $sql = "INSERT into products values (null,'{$data['name']}','{$data['description']}','{$data['price']}','{$data['image']}','{$data['date']}')";
             $result = $con->query($sql);
             return $result;
         }

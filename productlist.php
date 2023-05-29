@@ -1,5 +1,7 @@
 <?php
   session_start();
+
+  
   $msg = "";
      if(isset($_SESSION['email'])){
          $msg ='<div class="alert alert-success">Successfully Login!"</div>';
@@ -39,6 +41,7 @@ $allproducts = $product->get();
     <?php } ?>
    <?php foreach($allproducts as $product) { ?>
     <div class="card" style="width: 18rem;">
+    <img src="<?= $product['image'];?>" class="card-img-top">
    <div class="card-body">
     <h5 class="card-title"><?php echo $product['name'] ?></h5>
     <p class="card-text"><?php echo $product['description'] ?></p>

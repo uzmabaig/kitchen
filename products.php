@@ -1,53 +1,87 @@
 <?php
 require 'Product.php';
 
-$msg = ""; 
+$product = new product();
+$msg = "";
+
 if(isset($_POST['submit'])){
 
     $data = $_POST;
      $errors= array();
+
+   if(isset( $_FILES['image']['name'])){
+      $file_name = $_FILES['image']['name'];
+      $file_size =$_FILES['image']['size'];
+      $file_tmp =$_FILES['image']['tmp_name'];
+      $file_type=$_FILES['image']['type'];
     
-     // Validation 
+      $file_ext=strtolower(explode('.', $file_name)[1]);
+      $extensions= array("jpeg","jpg","png");
+    }
+    // Validation 
+      
     if($data['name'] == '' || !preg_match('/[a-zA-Z ]/',$data['name'])){
-          echo 'Please enter valid name',
+      echo 'Please enter valid name';
       exit;
-      }
-      if($data['description'] == ''){
-        echo 'Please enter the product description';
-        return false;
+      
+    } 
+    if($data['description'] == ''){
+       echo 'Please enter the product description';
+       return false;
                 
-      }elseif
+    }elseif
       (str_word_count($data['description']) > 100 ){
       echo 'you can use only 100 words to describe product in detail';
       return false;
-       } 
+    } 
 
-       if($data['price'] == ''){
-        echo 'Please enter the product price';
-        return false;
-        }elseif
-         ($data['price'] >= 100000){
-         echo 'your price of product should be under 5 digits';
-         return false;
-         } 
+    if($data['price'] == ''){
+       echo 'Please enter the product price';
+      return false;
+    }elseif
+      ($data['price'] >= 100000){
+       echo 'your price of product should be under 5 digits';
+       return false;
+    } 
 
-      $data = [
-         'name' => $data['name'],
-         'description' => $data['description'],
-         'price' => $data['price'],
-         'date'=> date('y-m-d')
-        ];
+     
 
-        $product = new product();
-        $add_products= $product->add($data);
+    if(in_array($file_ext,$extensions) === false){
+          // $errors['image_error']="extension not allowed, please choose a JPEG or PNG file.";
+          $msg = '<div class="alert alert-danger">extension not allowed, please choose a JPEG or PNG file!</div>';
+    }
+       
+    if(empty($msg)==true){
+      $name=time(); // set with time
+      $location = 'images/'; 
+      // $uploaddir = "../img/";
+$uploadfile = $location .$name. basename($file_name);
+// move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile);
+// $fpath=$_FILES['userfile']['name'];
+           
+          move_uploaded_file($file_tmp,$uploadfile);
+          $data = [
+            'name' => $data['name'],
+            'description' => $data['description'],
+            'price' => $data['price'],
+            'image' => $uploadfile,
+            'date'=> date('y-m-d H:i:s')
+             ];
+          $add_products= $product->add($data);
+          $msg ='<div class="alert alert-success">Save product successfully!</div>';
+    }
+
+   
+        // $product = new product();
+        // $add_products= $product->add($data);
      
     
-     if($add_products == false){
-          $msg = '<div class="alert alert-danger">Save product failed!</div>';
+    //  if($add_products == false){
+    //       $msg = '<div class="alert alert-danger">Save product failed!</div>';
          
-      }else{
-            $msg ='<div class="alert alert-success">Save product successfully!</div>';
-         }
+    //   }else{
+    //         $msg ='<div class="alert alert-success">Save product successfully!</div>';
+    //      }
         
    }
      
@@ -78,23 +112,30 @@ if(isset($_POST['submit'])){
          <?= $msg ?>
     <?php } ?>
         
-<div class="mt-4 mb-4 col-md-10 offset-2">
-   <form action="products.php" method="POST" id="form">
-   <div class="row col-md-8 mt-4">
-        <label for ="name">Fullname:
+    <div class=" mt-4 mb-4 col-md-8 offset-2" style="background-color:cadetblue" >
+   <form action="products.php" method="POST" enctype="multipart/form-data" id="form">
+   <div class="row col-md-8 mt-4 offset-2">
+        <label for ="name">Fullname:</label>
         <input type="text" id="name" name="name"class="form-control" >
+        <!-- <p class="text-danger" id="valid_name"></p> -->
         </div>
-        <div class="row col-md-8">
-        <label for ="description">Description:
+        <div class="row col-md-8 mt-4 offset-2">
+        <label for ="description">Description:</label>
         <textarea class="form-control" type="text" id="description" name="description" rows ="5"></textarea>
+        <!-- <p class="text-danger" id="valid_decription"></p> -->
         </div>
-        <div class="row col-md-8">
-        <label for ="price">Price:
+        <div class="row col-md-8 mt-4 offset-2">
+        <label for ="price">Price:</label>
         <input type="number" id="price" name="price" class="form-control"> 
+        <!-- <p class="text-danger" id="valid_price"></p> -->
+        </div>
+        <div class="row col-md-8 mt-4 offset-2">
+        <input type="file" name="image" id="image"class="form-control">
+        <!-- <p class="text-danger" id="valid_image"></p> -->
         </div>
         <br>
-        <div class="row col-md-4 offset-2">
-        <input type="submit" class= "btn btn-secondary" value='submit' name='submit' id="submit">
+        <div class="row col-md-6 mb-4 offset-3">
+        <input type="submit" class= "btn btn-primary" value='submit' name='submit' id="submit">
         </div>
         </form>
 </div>
