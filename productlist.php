@@ -1,11 +1,15 @@
 <?php
-  session_start();
-
-  
-  $msg = "";
+session_start();
+$msg = "";
      if(isset($_SESSION['email'])){
-         $msg ='<div class="alert alert-success">Successfully Login!"</div>';
-        };
+        //  $msg ='<div class="alert alert-success">Successfully Login!"</div>';
+         echo "<h4>Wellcome to"." ".$_SESSION["email"]."</h4>";
+
+        }else{
+        unset($_SESSION['email']);
+        session_destroy();
+        // header("Location:userslogin.php");
+       }
 
 require "Product.php";
 $product = new Product();
@@ -33,8 +37,11 @@ $allproducts = $product->get();
 </head>
 <body>
 
-<div class="container">
-   <div class="row mt-4">
+   <div class="container">
+   <div class="row col-md-1 mt-4 mb-4">
+    <a href="userslogin.php" class= "btn btn-danger">Log Out </a>
+    </div>
+    <div class="row mt-4">
    <?php
       if($msg !== ""){ ?>
          <?= $msg ?>
