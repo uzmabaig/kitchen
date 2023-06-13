@@ -1,6 +1,6 @@
 <?php
-
 require 'Customer.php';
+
 if(isset($_POST['submit'])){
 
   $data = $_POST;
@@ -104,7 +104,6 @@ if(isset($_POST['submit'])){
         </div>
       </div>
 </body>
-<script>
-   <script/>
+
 
 </html> 

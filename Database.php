@@ -92,6 +92,34 @@ class Database {
                 $res = $result->fetch_assoc();
                 return $res;
             }
+
+            public function order_save($data){
+            
+                $con = $this->connect();
+                $sql = "INSERT into orders values (null,'{$data['product_id']}','{$data['qty']}','{$data['status']}','{$data['date']}')";
+                $result = $con->query($sql);
+                return $result;
+            }
+
+            public function search_product($name){
+            
+                $con = $this->connect();
+                $sql = "select * from products where name like '%$name%'";
+                $result = $con->query($sql);
+                $res = $result->fetch_all(MYSQLI_ASSOC);
+                return $res;
+            }
+
+            public function mycart(){
+            
+                $con = $this->connect();
+                $sql = "SELECT products.product_id,products.name, orders.qty, orders.date
+                        FROM products
+                        INNER JOIN orders ON products.product_id = orders.order_id; ";
+                $result = $con->query($sql);
+                $res = $result->fetch_all(MYSQLI_ASSOC);
+                return $res;
+            }
         }        
 
         

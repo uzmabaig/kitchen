@@ -43,14 +43,15 @@ if($product_details !== false || $product_details !== null){
       <?= $msg ?>
       <?php } ?>
         
-<div class="card" style="width: 18rem;">
+<div class="card" style="width: 22rem;">
    <div class="card-body">
   
     <h5 class="card-title"><?php echo $product_details['name'] ?></h5>
     <p class="card-text"><?php echo $product_details['description']?></p>
     <a href="#" class="btn btn-primary"><?php echo $product_details['price']?></a>
-    <a href="http://localhost/kitchen/productdelete.php?id=<?=$product_details['product_id']?>"class="btn btn-danger">Delete</a>
     <a href="http://localhost/kitchen/updateproduct.php?id=<?=$product_details['product_id']?>"class="btn btn-info">Update</a>
+    <a href="http://localhost/kitchen/productlist.php?id=<?=$product_details['product_id']?>"class="btn btn-success">order</a>
+    <a href="http://localhost/kitchen/productdelete.php?id=<?=$product_details['product_id']?>"class="btn btn-danger">Delete</a>
   </div>
   </div>
 </div>

@@ -1,10 +1,26 @@
+<?php
+require 'Order.php';
 
+if(isset($_POST['submit'])){
+$data = $_POST;
+$errors= array();
+
+$data = [
+    'qty'  =>$data['qty'],
+    'status' => $data['status'],
+    'date'=> date('y-m-d H:i:s')
+     ];
+  $order = new Order();
+  $add_orders = $order->add($data);
+  
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-<title>Order</title>
+<title>Orders</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/custom.css">
     <!-- <script src="js/bootstrap.js"></script> -->
@@ -21,26 +37,18 @@
 <body>
 <div class="container">
    <div class="row mt-4">
-   <div class="mt-4 mb-4 col-md-10 offset-3">
-   <form action="customers.php" method="post" id="form">
-   <div class="row col-md-6 mt-4">
-        <label for ="name">Fullname:
-        <input type="text" id="name" name="name" class="form-control">
+   <div class=" mt-4 mb-4 col-md-6 offset-3" style="background-color:lightblue" >
+   <form action="orders.php" method="post" id="form">
+   <div class="row col-md-8 mt-4 offset-2">
+        <label for ="qty">Quantity:</label>
+        <input type="number" id="qty" name="qty" class="form-control">
         </div>
-        <div class="row col-md-6">
-        <label for ="date_of_birth">Date of Birth:
-        <input type="date" class="form-control" id="date_of_birth" name="date_of_birth">
-        </div>
-        <div class="row col-md-6">
-        <label for ="email">Email:
-        <input type="email" id="email" name="email" class="form-control"> 
-        </div>
-        <div class="row col-md-6">
-        <label for ="password">Password:
-        <input type="password" id="password" name="password" class="form-control"> 
+        <div class="row col-md-8 mt-4 offset-2">
+        <label for ="status">Status:</label>
+        <input type="text" class="form-control" id="status" name="status" >
         </div>
         <br>
-        <div class="row col-md-4 offset-1">
+        <div class="row col-md-6 mb-4 offset-3">
         <input type="submit" class= "btn btn-secondary" value='Submit' name='submit' id="submit">
         </div>
         </form>

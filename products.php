@@ -67,6 +67,7 @@ $uploadfile = $location .$name. basename($file_name);
             'image' => $uploadfile,
             'date'=> date('y-m-d H:i:s')
              ];
+             
           $add_products= $product->add($data);
           $msg ='<div class="alert alert-success">Save product successfully!</div>';
     }

@@ -21,6 +21,21 @@ class Product extends Database {
         return $this->products_productupdate($id,$details); 
     }
 
+    public function add_order($data){
+        return $this->order_save($data);
+          
+      }
+
+      public function get_product_by_name($name){
+        return $this->search_product($name);
+          
+      }
+
+      public function check_product_in_cart(){
+        return $this->mycart();
+          
+      }
+
 }
 
 ?>
