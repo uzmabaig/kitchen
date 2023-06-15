@@ -88,6 +88,7 @@ if(isset($_POST['submit'])){
     <div class=" mt-4 mb-4 col-md-4 offset-4" style="background-color:lightblue" >
    <form action="usersregistration.php" method="POST" id="form">
    <div class="row col-md-8 mt-4 offset-2">
+       
         <label for ="name">Fullname:
         <input type="text" id="name" name="name"class="form-control" >
         </div>

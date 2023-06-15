@@ -2,12 +2,11 @@
 session_start();
 
 if(isset($_GET['logout'])){
-  unset($_SESSION['email']);
-  session_destroy();
+ session_destroy();
   header("Location:userslogin.php");
 }
 
-     if(isset($_SESSION['email'])){
+     if(isset($_SESSION["email"]) && isset($_SESSION["user_id"])){
       
          echo "<h6>Wellcome to"." ".$_SESSION["email"]."</h6>";
        }else{
@@ -27,9 +26,11 @@ if(isset($_GET['logout'])){
 
      $data = [
     'product_id'=>$_GET['id'],
+    'user_id'=>$_SESSION["user_id"],
     'qty' => 1,
     'status' => 'pending',
     'date'=> date('y-m-d H:i:s')
+   
      ];
 
      $add_order = $product->add_order($data);

@@ -1,7 +1,10 @@
 <?php
+session_start();
+
 require "Product.php";
 $product = new Product();
 $product_list = $product->check_product_in_cart();
+
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +34,7 @@ $product_list = $product->check_product_in_cart();
   </thead>
   <tbody>
     <?php foreach($product_list as $product) { ?>
- <tr>
+   <tr>
      <td><?=$product['product_id']?></td>
       <td><?=$product['name']?></td>
       <td><?=$product['qty']?></td>

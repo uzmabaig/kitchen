@@ -78,7 +78,7 @@ class Database {
             public function usersinfo_get($email,$password){  
 
                 $con = $this->connect();
-                $sql = "select * from users where email = '{$email}' AND  password = '{$password}'";
+                $sql = "select * from users where email = '{$email}' AND password = '{$password}'";
                 $result = $con->query($sql);
                 $res = $result->fetch_assoc();
                 return $res;
@@ -96,7 +96,7 @@ class Database {
             public function order_save($data){
             
                 $con = $this->connect();
-                $sql = "INSERT into orders values (null,'{$data['product_id']}','{$data['qty']}','{$data['status']}','{$data['date']}')";
+                $sql = "INSERT into orders values (null,'{$data['product_id']}','{$data['user_id']}','{$data['qty']}','{$data['status']}','{$data['date']}')";
                 $result = $con->query($sql);
                 return $result;
             }
@@ -115,7 +115,8 @@ class Database {
                 $con = $this->connect();
                 $sql = "SELECT products.product_id,products.name, orders.qty, orders.date
                         FROM products
-                        INNER JOIN orders ON products.product_id = orders.order_id; ";
+                        INNER JOIN orders ON products.product_id = orders.product_id
+                        where orders.user_id = ".$_SESSION['user_id']."";
                 $result = $con->query($sql);
                 $res = $result->fetch_all(MYSQLI_ASSOC);
                 return $res;

@@ -4,9 +4,10 @@ session_start();
 
  $msg = "";
  if(isset($_GET['submit'])){
-
+  
         $data = $_GET;
-        $inputemail  = $data["inputemail"];
+       
+        $inputemail = $data["inputemail"];
         $inputpassword = $data["inputpassword"];
 
         if($inputemail ==  ""){
@@ -21,13 +22,15 @@ session_start();
 
           $user= new user();
           $dbuser = $user->get($inputemail,$inputpassword);
+         
           
          if(!is_array($dbuser)){
             $msg ='<div class="alert alert-danger">Login failed!</div>';
             //  header("Location:userslogin.php");
             }
          else {
-            $_SESSION['email'] =  $data["inputemail"];
+            $_SESSION["email"] =  $data["inputemail"];
+            $_SESSION["user_id"] =  $dbuser['id'];
             header("Location:productlist.php");
          }
       };
@@ -68,13 +71,9 @@ session_start();
      <div class="row col-md-6 mb-4 offset-3">
      <input type="submit"class= "btn btn-primary" value='Login' name='submit' id="submit">
      </div>
-   
-
-</form>
-
+  </form>
 </div>
-
-        </div>
+  </div>
       </div>
   
 </body>
