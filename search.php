@@ -1,8 +1,5 @@
 <?php
-// require "Product.php";
 
-// $product = new Product();
-// $product_search = $product->get_product_by_name('name');
 
 ?>
 

@@ -26,7 +26,7 @@ session_start();
           
          if(!is_array($dbuser)){
             $msg ='<div class="alert alert-danger">Login failed!</div>';
-            //  header("Location:userslogin.php");
+           
             }
          else {
             $_SESSION["email"] =  $data["inputemail"];

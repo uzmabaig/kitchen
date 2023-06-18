@@ -35,6 +35,7 @@ class Product extends Database {
         return $this->mycart();
           
       }
+    
 
 }
 

@@ -15,8 +15,14 @@ class User extends Database {
 
     public function get_email_by_check($email){
       return $this->email_get($email);
-  }
-}
+    }
+
+  public function save_password($password){
+    return $this->update_password($password);
+   }
+
+
+ }
 
 
 ?>

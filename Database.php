@@ -17,7 +17,7 @@ class Database {
         }
         // echo "Connected successfully";
         return $conn;
-      }
+       }
         public function customers_save($data){
             
             $con = $this->connect();
@@ -59,68 +59,81 @@ class Database {
             return $result;
         }
 
-         public function products_productupdate($id,$details){
+        public function products_productupdate($id,$details){
             
             $con = $this->connect();
             $sql = "UPDATE products SET name ='".$details['name']."' , description = '".$details['description']."' , price = {$details['price']} WHERE product_id= {$id}";
             $result = $con->query($sql);
             return $result;
-             }
+        }
            
-             public function usersinfo_save($data){
+        public function usersinfo_save($data){
             
-                $con = $this->connect();
-                $sql = "INSERT into users values (null,'{$data['name']}','{$data['email']}','{$data['phone_number']}','{$data['password']}','{$data['date']}')";
-                $result = $con->query($sql);
-                return $result;
-            }
+            $con = $this->connect();
+            $sql = "INSERT into users values (null,'{$data['name']}','{$data['email']}','{$data['phone_number']}','{$data['password']}','{$data['date']}')";
+            $result = $con->query($sql);
+            return $result;
+        }
 
-            public function usersinfo_get($email,$password){  
+        public function usersinfo_get($email,$password){  
 
-                $con = $this->connect();
-                $sql = "select * from users where email = '{$email}' AND password = '{$password}'";
-                $result = $con->query($sql);
-                $res = $result->fetch_assoc();
-                return $res;
-            }
+            $con = $this->connect();
+            $sql = "select * from users where email = '{$email}' AND password = '{$password}'";
+            $result = $con->query($sql);
+            $res = $result->fetch_assoc();
+            return $res;
 
-            public function email_get($email){  
+        }
 
-                $con = $this->connect();
-                $sql = "select * from users where email = '{$email}'";
-                $result = $con->query($sql);
-                $res = $result->fetch_assoc();
-                return $res;
-            }
+        public function email_get($email){  
 
-            public function order_save($data){
+            $con = $this->connect();
+            $sql = "select * from users where email = '{$email}'";
+            $result = $con->query($sql);
+            $res = $result->fetch_assoc();
+            return $res;
+
+        }
+
+        public function order_save($data){
             
-                $con = $this->connect();
-                $sql = "INSERT into orders values (null,'{$data['product_id']}','{$data['user_id']}','{$data['qty']}','{$data['status']}','{$data['date']}')";
-                $result = $con->query($sql);
-                return $result;
-            }
+            $con = $this->connect();
+            $sql = "INSERT into orders values (null,'{$data['product_id']}','{$data['user_id']}','{$data['qty']}','{$data['status']}','{$data['date']}')";
+            $result = $con->query($sql);
+            return $result;
+        }
 
-            public function search_product($name){
+        public function search_product($name){
             
-                $con = $this->connect();
-                $sql = "select * from products where name like '%$name%'";
-                $result = $con->query($sql);
-                $res = $result->fetch_all(MYSQLI_ASSOC);
-                return $res;
-            }
+            $con = $this->connect();
+            $sql = "select * from products where name like '%$name%'";
+            $result = $con->query($sql);
+            $res = $result->fetch_all(MYSQLI_ASSOC);
+            return $res;
+        }
 
-            public function mycart(){
+        public function mycart(){
             
-                $con = $this->connect();
-                $sql = "SELECT products.product_id,products.name, orders.qty, orders.date
-                        FROM products
-                        INNER JOIN orders ON products.product_id = orders.product_id
-                        where orders.user_id = ".$_SESSION['user_id']."";
-                $result = $con->query($sql);
-                $res = $result->fetch_all(MYSQLI_ASSOC);
-                return $res;
-            }
+            $con = $this->connect();
+            $sql = "SELECT products.product_id,products.name, orders.qty, orders.date
+                    FROM products
+                    INNER JOIN orders ON products.product_id = orders.product_id
+                    where orders.user_id = ".$_SESSION['user_id']."";
+            $result = $con->query($sql);
+            $res = $result->fetch_all(MYSQLI_ASSOC);
+            return $res;
+
+        }
+
+        public function update_password($password){
+            
+            $con = $this->connect();
+            $sql = "update users set password = '{$password}' where email = '".$_SESSION['email']."'";
+            $result = $con->query($sql);
+            return $result;
+        }
+
+          
         }        
 
         

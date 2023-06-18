@@ -96,7 +96,8 @@ if(isset($_GET['logout'])){
           </ul>
         <li>
           <a href="productlist.php?logout=true" class= "btn btn-danger">Log Out </a>
-           <a href="cart.php" class= "btn btn-primary">My Cart </a>
+          <a href="cart.php" class= "btn btn-primary">My Cart </a>
+          <a href="updatepassword.php">forget or change password? </a>
         </li>
       </ul>
       <form action="productlist.php" class="d-flex" method="GET" enctype="multipart/form-data" id="form">
