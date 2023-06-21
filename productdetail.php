@@ -1,4 +1,5 @@
 <?php
+include "header.php";
 require "Product.php";
 
 $product = new Product();
@@ -44,6 +45,7 @@ if($product_details !== false || $product_details !== null){
       <?php } ?>
         
 <div class="card" style="width: 22rem;">
+<img src="<?= $product_details['image'];?>" class="card-img-top" height="200px" width="300px">
    <div class="card-body">
   
     <h5 class="card-title"><?php echo $product_details['name'] ?></h5>

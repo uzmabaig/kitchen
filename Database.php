@@ -62,7 +62,7 @@ class Database {
         public function products_productupdate($id,$details){
             
             $con = $this->connect();
-            $sql = "UPDATE products SET name ='".$details['name']."' , description = '".$details['description']."' , price = {$details['price']} WHERE product_id= {$id}";
+            $sql = "UPDATE products SET name ='".$details['name']."' , description = '".$details['description']."' , price = {$details['price']} , image = '".$details['image']."' WHERE product_id= {$id}";
             $result = $con->query($sql);
             return $result;
         }
@@ -115,7 +115,7 @@ class Database {
         public function mycart(){
             
             $con = $this->connect();
-            $sql = "SELECT products.product_id,products.name, orders.qty, orders.date
+            $sql = "SELECT products.product_id,orders.order_id,products.name, orders.qty, orders.date
                     FROM products
                     INNER JOIN orders ON products.product_id = orders.product_id
                     where orders.user_id = ".$_SESSION['user_id']."";
@@ -133,8 +133,15 @@ class Database {
             return $result;
         }
 
-          
-        }        
+        public function order_del($id){
+            
+            $con = $this->connect();
+            $sql = "delete from orders Where order_id= {$id}";
+            $result = $con->query($sql);
+            return $result;
+
+        }
+      }        
 
         
  ?>

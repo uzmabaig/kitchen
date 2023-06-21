@@ -60,9 +60,7 @@ if(isset($_GET['submit'])){
    <div class="row col-md-8 mt-4 offset-2">
    <label for ="oldpassword">Old Password:
     <input type="password" id="oldpassword" name="oldpassword" class="form-control">
-    
-    <p class="text-danger" id="valid-oldpassword"></p>
-   </div>
+    </div>
     <div class="row col-md-8 offset-2">
     <label for ="newpassword">New Password:
     <input type="password" id="newpassword" name="newpassword" class="form-control">

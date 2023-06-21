@@ -9,7 +9,7 @@ if(isset($_POST['submit'])){
     $data = $_POST;
      $errors= array();
 
-   if(isset( $_FILES['image']['name'])){
+   if(isset($_FILES['image']['name'])){
       $file_name = $_FILES['image']['name'];
       $file_size =$_FILES['image']['size'];
       $file_tmp =$_FILES['image']['tmp_name'];
@@ -21,7 +21,7 @@ if(isset($_POST['submit'])){
     // Validation 
       
     if($data['name'] == '' || !preg_match('/[a-zA-Z ]/',$data['name'])){
-      echo 'Please enter valid name';
+     echo 'Please enter valid name';
       exit;
       
     } 
@@ -47,44 +47,28 @@ if(isset($_POST['submit'])){
      
 
     if(in_array($file_ext,$extensions) === false){
-          // $errors['image_error']="extension not allowed, please choose a JPEG or PNG file.";
-          $msg = '<div class="alert alert-danger">extension not allowed, please choose a JPEG or PNG file!</div>';
+      $msg = '<div class="alert alert-danger">extension not allowed, please choose a JPEG or PNG file!</div>';
     }
        
     if(empty($msg)==true){
       $name=time(); // set with time
       $location = 'images/'; 
-      // $uploaddir = "../img/";
-$uploadfile = $location .$name. basename($file_name);
-// move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile);
-// $fpath=$_FILES['userfile']['name'];
+      $uploadfile = $location .$name. basename($file_name);
+
            
-          move_uploaded_file($file_tmp,$uploadfile);
-          $data = [
-            'name' => $data['name'],
-            'description' => $data['description'],
-            'price' => $data['price'],
-            'image' => $uploadfile,
-            'date'=> date('y-m-d H:i:s')
-             ];
+      move_uploaded_file($file_tmp,$uploadfile);
+      $data = [
+        'name' => $data['name'],
+        'description' => $data['description'],
+        'price' => $data['price'],
+        'image' => $uploadfile,
+        'date'=> date('y-m-d H:i:s')
+          ];
              
           $add_products= $product->add($data);
           $msg ='<div class="alert alert-success">Save product successfully!</div>';
+      }
     }
-
-   
-        // $product = new product();
-        // $add_products= $product->add($data);
-     
-    
-    //  if($add_products == false){
-    //       $msg = '<div class="alert alert-danger">Save product failed!</div>';
-         
-    //   }else{
-    //         $msg ='<div class="alert alert-success">Save product successfully!</div>';
-    //      }
-        
-   }
      
 ?>
 <!DOCTYPE html>
@@ -118,21 +102,17 @@ $uploadfile = $location .$name. basename($file_name);
    <div class="row col-md-8 mt-4 offset-2">
         <label for ="name">Fullname:</label>
         <input type="text" id="name" name="name"class="form-control" >
-        <!-- <p class="text-danger" id="valid_name"></p> -->
         </div>
         <div class="row col-md-8 mt-4 offset-2">
         <label for ="description">Description:</label>
         <textarea class="form-control" type="text" id="description" name="description" rows ="5"></textarea>
-        <!-- <p class="text-danger" id="valid_decription"></p> -->
         </div>
         <div class="row col-md-8 mt-4 offset-2">
         <label for ="price">Price:</label>
         <input type="number" id="price" name="price" class="form-control"> 
-        <!-- <p class="text-danger" id="valid_price"></p> -->
         </div>
         <div class="row col-md-8 mt-4 offset-2">
         <input type="file" name="image" id="image"class="form-control">
-        <!-- <p class="text-danger" id="valid_image"></p> -->
         </div>
         <br>
         <div class="row col-md-6 mb-4 offset-3">
@@ -144,4 +124,4 @@ $uploadfile = $location .$name. basename($file_name);
       </div>
 </body>
 
-</html> 
+</html>   `

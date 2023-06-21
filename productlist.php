@@ -1,17 +1,17 @@
 <?php
 session_start();
+include "header.php";
 
 if(isset($_GET['logout'])){
  session_destroy();
   header("Location:userslogin.php");
-}
+  }
 
-     if(isset($_SESSION["email"]) && isset($_SESSION["user_id"])){
-      
-         echo "<h6>Wellcome to"." ".$_SESSION["email"]."</h6>";
-       }else{
-        header("Location:userslogin.php");
-       }
+  if(isset($_SESSION["email"]) && isset($_SESSION["user_id"])){
+      echo "<h6>Wellcome to"." ".$_SESSION["email"]."</h6>";
+  }else{
+      header("Location:userslogin.php");
+  }
  
 
    require "Product.php";
@@ -68,54 +68,17 @@ if(isset($_GET['logout'])){
        
 </head>
 <body>
-   <div class="container">
-   
-   <nav class="navbar navbar-expand-lg navbar-light" style="background-color:lightblue">
-   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        <li>
-          <a href="productlist.php?logout=true" class= "btn btn-danger">Log Out </a>
-          <a href="cart.php" class= "btn btn-primary">My Cart </a>
-          <a href="updatepassword.php">forget or change password? </a>
-        </li>
-      </ul>
-      <form action="productlist.php" class="d-flex" method="GET" enctype="multipart/form-data" id="form">
-        <input class="form-control me-2" type="search" placeholder="Search" name="search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit" name="submit">Search</button>
-  </form>
-    </div>
-  </div>
-</nav>
- <div class="row mt-4">
-   <?php
+  
+ <div class ='row'>
+ <?php
       if($msg !== ""){ ?>
          <?= $msg ?>
     <?php } ?>
    <?php foreach($allproducts as $product) { ?>
+    <div class='col-md-4 mt-4 mb-2'>
     <div class="card" style="width: 22rem;">
-    <img src="<?= $product['image'];?>" class="card-img-top">
-   <div class="card-body">
+    <img src="<?= $product['image'];?>" class="card-img-top" height="200px" width="300px">
+    <div class="card-body">
     <h5 class="card-title"><?php echo $product['name'] ?></h5>
     <p class="card-text"><?php echo $product['description'] ?></p>
     <a href="http://localhost/kitchen/productdetail.php?id=<?=$product['product_id']?>" class="btn btn-primary"><?php echo $product['price'] ?></a>
@@ -123,6 +86,7 @@ if(isset($_GET['logout'])){
     <a href="http://localhost/kitchen/productlist.php?order=true&id=<?=$product['product_id']?>"class= "btn btn-success">order</a>
     <a href="http://localhost/kitchen/productdelete.php?id=<?=$product['product_id']?>"class="btn btn-danger">Delete</a>
  </div>
+  </div>
   </div>
 <?php } ?>
 </div>
