@@ -1,5 +1,5 @@
 <?php
-require 'Product.php';
+include 'model/Product.php';
 
 $product = new product();
 $msg = "";
@@ -54,9 +54,8 @@ if(isset($_POST['submit'])){
       $name=time(); // set with time
       $location = 'images/'; 
       $uploadfile = $location .$name. basename($file_name);
-
-           
       move_uploaded_file($file_tmp,$uploadfile);
+      
       $data = [
         'name' => $data['name'],
         'description' => $data['description'],

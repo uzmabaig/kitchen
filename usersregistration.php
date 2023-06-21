@@ -1,5 +1,5 @@
 <?php
-require 'User.php';
+include 'model/User.php';
 
 $msg = ""; 
 if(isset($_POST['submit'])){

@@ -1,6 +1,6 @@
 <?php
 include "header.php";
-require "Product.php";
+include 'model/Product.php';
 
 $product = new Product();
 $product_id = $_GET['id'];

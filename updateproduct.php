@@ -1,6 +1,6 @@
 <?php
 include "header.php";
-require "Product.php";
+include 'model/Product.php';
 
 $msg = "";
 if(isset($_GET['id'])){

@@ -1,5 +1,5 @@
 <?php
-require 'Order.php';
+include 'model/Order.php';
 
 if(isset($_POST['submit'])){
 $data = $_POST;

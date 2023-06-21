@@ -14,7 +14,7 @@ if(isset($_GET['logout'])){
   }
  
 
-   require "Product.php";
+  include 'model/Product.php';
    $msg = ""; 
    $product = new Product();
    $allproducts = $product->get();
