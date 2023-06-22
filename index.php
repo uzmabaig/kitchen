@@ -1,5 +1,6 @@
 <?php
 include 'model/User.php';
+
 session_start();
 
  $msg = "";
@@ -31,7 +32,7 @@ session_start();
          else {
             $_SESSION["email"] =  $data["inputemail"];
             $_SESSION["user_id"] =  $dbuser['id'];
-            header("Location:productlist.php");
+            header("Location: views/productlist.php");
          }
       };
        
@@ -59,7 +60,7 @@ session_start();
          <?= $msg ?>
     <?php } ?>
    <div class=" mt-4 mb-4 col-md-6 offset-3" style="background-color:lightblue" >
-   <form action="userslogin.php" method="GET" enctype="multipart/form-data" id="form">
+   <form action="index.php" method="GET" enctype="multipart/form-data" id="form">
    <div class="row col-md-8 mt-4 offset-2">
    <label for ="inputemail">Email:
     <input type="email" id="inputemail" name="inputemail" class="form-control">

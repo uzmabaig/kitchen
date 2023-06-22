@@ -1,5 +1,5 @@
 <?php
-include 'model/Product.php';
+include '../model/Product.php';
 
 $product = new product();
 $msg = "";
@@ -52,7 +52,7 @@ if(isset($_POST['submit'])){
        
     if(empty($msg)==true){
       $name=time(); // set with time
-      $location = 'images/'; 
+      $location = '../images/'; 
       $uploadfile = $location .$name. basename($file_name);
       move_uploaded_file($file_tmp,$uploadfile);
       
@@ -75,7 +75,7 @@ if(isset($_POST['submit'])){
 
 <head>
 <title>Product</title>
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/views/bootstrap.css">
     <link rel="stylesheet" href="css/custom.css">
     <!-- <script src="js/bootstrap.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"

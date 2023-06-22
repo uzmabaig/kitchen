@@ -1,5 +1,5 @@
 <?php
-include 'model/User.php';
+include '../model/User.php';
 session_start();
 
 $msg = "";
@@ -35,8 +35,8 @@ if(isset($_GET['submit'])){
 ?>
 <head>
 <title>Update Password</title>
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/custom.css">
+<link rel="stylesheet" href="views..\..\..\..\css/bootstrap.css">
+<link rel="stylesheet" href="views..\..\..\..\css/custom.css">
 <!-- <script src="js/bootstrap.js"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
     integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"

@@ -1,6 +1,6 @@
 <?php
 include "header.php";
-include 'model/Product.php';
+include '../model/Product.php';
 
 $msg = "";
 if(isset($_GET['id'])){
@@ -25,7 +25,7 @@ if(isset($_POST['submit'])){
 
     if(empty($msg)==true){
     $name=time(); // set with time
-    $location = 'images/'; 
+    $location = '../images/'; 
     $uploadfile = $location .$name. basename($file_name);
     move_uploaded_file($file_tmp,$uploadfile);
     

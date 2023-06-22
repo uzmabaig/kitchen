@@ -4,17 +4,17 @@ include "header.php";
 
 if(isset($_GET['logout'])){
  session_destroy();
-  header("Location:userslogin.php");
+  header("Location:..\index.php");
   }
 
   if(isset($_SESSION["email"]) && isset($_SESSION["user_id"])){
       echo "<h6>Wellcome to"." ".$_SESSION["email"]."</h6>";
   }else{
-      header("Location:userslogin.php");
+      header("Location:..\index.php");
   }
  
 
-  include 'model/Product.php';
+   include '../model/Product.php';
    $msg = ""; 
    $product = new Product();
    $allproducts = $product->get();
@@ -58,11 +58,11 @@ if(isset($_GET['logout'])){
 
 <head>
 <title>Productlist</title>
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="views..\..\..\..\css\bootstrap.css">
+    <link rel="stylesheet" href="views..\..\..\..\css\custom.css">
     <!-- <script src="js/bootstrap.js"></script> -->
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="js\popper.min.js"></script>
+    <script src="js\bootstrap.min.js"></script>
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/jquery-3.6.0.min.js"></script>
        
@@ -81,10 +81,10 @@ if(isset($_GET['logout'])){
     <div class="card-body">
     <h5 class="card-title"><?php echo $product['name'] ?></h5>
     <p class="card-text"><?php echo $product['description'] ?></p>
-    <a href="http://localhost/kitchen/productdetail.php?id=<?=$product['product_id']?>" class="btn btn-primary"><?php echo $product['price'] ?></a>
-    <a href="http://localhost/kitchen/updateproduct.php?id=<?=$product['product_id']?>"class="btn btn-info">Update</a>
-    <a href="http://localhost/kitchen/productlist.php?order=true&id=<?=$product['product_id']?>"class= "btn btn-success">order</a>
-    <a href="http://localhost/kitchen/productdelete.php?id=<?=$product['product_id']?>"class="btn btn-danger">Delete</a>
+    <a href="http://localhost/kitchen/views/productdetail.php?id=<?=$product['product_id']?>" class="btn btn-primary"><?php echo $product['price'] ?></a>
+    <a href="http://localhost/kitchen/views/updateproduct.php?id=<?=$product['product_id']?>"class="btn btn-info">Update</a>
+    <a href="http://localhost/kitchen/views/productlist.php?order=true&id=<?=$product['product_id']?>"class= "btn btn-success">order</a>
+    <a href="http://localhost/kitchen/views/productdelete.php?id=<?=$product['product_id']?>"class="btn btn-danger">Delete</a>
  </div>
   </div>
   </div>
@@ -95,3 +95,7 @@ if(isset($_GET['logout'])){
   </body>
 </html> 
 
+<!-- ./ = Your current directory
+../ = One directory lower
+../../ = Two directories lower
+../../../ = Three directories lower -->

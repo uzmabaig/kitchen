@@ -1,5 +1,5 @@
 <?php
-include 'model/User.php';
+include '../model/User.php';
 
 $msg = ""; 
 if(isset($_POST['submit'])){
@@ -62,8 +62,7 @@ if(isset($_POST['submit'])){
 <html lang="en">
 
 <head>
-<title>Registration Page
-</title>
+<title>Registration Page</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/custom.css">
     <!-- <script src="js/bootstrap.js"></script> -->

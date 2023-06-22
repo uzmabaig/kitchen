@@ -1,7 +1,7 @@
 <?php
 session_start();
 include "header.php";
-include 'model/Product.php';
+include '../model/Product.php';
 
 $msg = "";
 $product = new Product();
@@ -61,7 +61,7 @@ if(isset($_GET['delete'])){
       <td><?=$product['name']?></td>
       <td><?=$product['qty']?></td>
       <td><?=$product['date']?></td>
-      <td><a href="http://localhost/kitchen/cart.php?delete=true&&id=<?=$product['order_id']?>"class="btn btn-danger">Delete</a>
+      <td><a href="http://localhost/kitchen/views/cart.php?delete=true&&id=<?=$product['order_id']?>"class="btn btn-danger">Delete</a>
     </tr>
    <?php } ?>
   </tbody>

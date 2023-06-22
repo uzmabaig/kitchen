@@ -17,6 +17,7 @@ class Database {
         }
         // echo "Connected successfully";
         return $conn;
+
        }
         public function customers_save($data){
             
@@ -24,7 +25,9 @@ class Database {
             $sql = "INSERT into customers values (null,'{$data['name']}','{$data['date_of_birth']}','{$data['email']}','{$data['password']}','{$data['date']}')";
             $result = $con->query($sql);
             return $result;
+
         }
+        
          public function products_save($data){
             
             $con = $this->connect();
