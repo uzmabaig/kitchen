@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "header.php";
+include '../model/Product.php';
 
 if(isset($_GET['logout'])){
  session_destroy();
@@ -13,8 +14,6 @@ if(isset($_GET['logout'])){
       header("Location:..\index.php");
   }
  
-
-   include '../model/Product.php';
    $msg = ""; 
    $product = new Product();
    $allproducts = $product->get();

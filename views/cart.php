@@ -1,8 +1,7 @@
 <?php
 session_start();
-include "header.php";
-include '../model/Product.php';
 
+include '../model/Product.php';
 $msg = "";
 $product = new Product();
 $product_list = $product->check_product_in_cart();
@@ -23,20 +22,10 @@ if(isset($_GET['delete'])){
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<title>My Cart</title>
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/custom.css">
-    <!-- <script src="js/bootstrap.js"></script> -->
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery-3.6.0.min.js"></script>
-    <script src="js/jquery-3.6.0.min.js"></script>
-       
-</head>
-<body>
+<?php
+include "header.php";
+?>
+
    <div class="container">
    <div class="row mt-4">
 
@@ -69,6 +58,6 @@ if(isset($_GET['delete'])){
 
 </div>
       </div>
-</body>
-
-</html> 
+  <?php
+    include "footer.php";
+  ?>
