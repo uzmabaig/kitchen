@@ -4,3 +4,7 @@ Branches
 Merge
 Revert
 Pull Request
+
+
+git checkout -b branchname
+git checkout main
