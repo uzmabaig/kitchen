@@ -1,6 +1,5 @@
 <?php
 include 'model/User.php';
-
 session_start();
 
  $msg = "";

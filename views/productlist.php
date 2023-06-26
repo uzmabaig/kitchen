@@ -51,24 +51,8 @@ if(isset($_GET['logout'])){
     }
     
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
 <title>Productlist</title>
-    <link rel="stylesheet" href="views..\..\..\..\css\bootstrap.css">
-    <link rel="stylesheet" href="views..\..\..\..\css\custom.css">
-    <!-- <script src="js/bootstrap.js"></script> -->
-    <script src="js\popper.min.js"></script>
-    <script src="js\bootstrap.min.js"></script>
-    <script src="js/jquery-3.6.0.min.js"></script>
-    <script src="js/jquery-3.6.0.min.js"></script>
-       
-</head>
-<body>
-  
- <div class ='row'>
+<div class ='row'>
  <?php
       if($msg !== ""){ ?>
          <?= $msg ?>
@@ -91,10 +75,4 @@ if(isset($_GET['logout'])){
 </div>
 
         </div>  
-  </body>
-</html> 
-
-<!-- ./ = Your current directory
-../ = One directory lower
-../../ = Two directories lower
-../../../ = Three directories lower -->
+    <?php include "footer.php"; ?>

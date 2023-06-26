@@ -25,8 +25,7 @@ if(isset($_GET['delete'])){
 <?php
 include "header.php";
 ?>
-
-   <div class="container">
+<div class="container">
    <div class="row mt-4">
 
    <?php

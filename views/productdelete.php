@@ -11,11 +11,9 @@ if($product_delete == false || $product_delete == null){
     
 }else{
    $msg ='<div class="alert alert-success">Delete product successfully!</div>';
-    
  }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,6 +44,4 @@ if($product_delete == false || $product_delete == null){
    </div>
 </div>
 </body> 
-
-
 </html>  

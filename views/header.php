@@ -2,8 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>My Cart</title>
-    <link rel="stylesheet" href="views..\..\..\..\css/bootstrap.css">
+ <link rel="stylesheet" href="views..\..\..\..\css/bootstrap.css">
     <link rel="stylesheet" href="views..\..\..\..\css/custom.css">
     <!-- <script src="js/bootstrap.js"></script> -->
     <script src="js/popper.min.js"></script>
