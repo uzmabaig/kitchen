@@ -144,6 +144,16 @@ class Database {
             return $result;
 
         }
+
+        public function orders_list(){
+            
+            $con = $this->connect();
+            $sql = "SELECT * FROM orders
+                     ORDER BY order_id DESC LIMIT 10";
+            $result = $con->query($sql);
+            $res = $result->fetch_all(MYSQLI_ASSOC);
+            return $res;
+        }
       }        
 
         

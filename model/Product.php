@@ -40,7 +40,9 @@ class Product extends Database {
       return $this->order_del($id); 
     }  
     
-
+    public function get_order_list(){
+        return $this->orders_list();
+    }
 }
 
 ?>
