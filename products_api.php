@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Rest-Api</title>
+    <title>Prod-Api</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/custom.css">
     <!-- <script src="js/bootstrap.js"></script> -->
@@ -39,7 +39,7 @@
   <script>
    $.ajax({
         type :'GET',
-        url: 'http://localhost/kitchen/api/products.php?offset=5',
+        url: 'http://localhost/kitchen/api/products.php',
         success: function(data){
            data = JSON.parse(data);
           tableBody = $('table > tbody');
@@ -56,6 +56,8 @@
               });
 
      }
+
+
 
 });
 </script>

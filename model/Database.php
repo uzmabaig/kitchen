@@ -149,12 +149,23 @@ class Database {
             
             $con = $this->connect();
             $sql = "SELECT * FROM orders
-                     ORDER BY order_id DESC LIMIT 10";
+                     ORDER BY order_id DESC Limit 10";
             $result = $con->query($sql);
             $res = $result->fetch_all(MYSQLI_ASSOC);
             return $res;
         }
-      }        
+         
+      
+        public function orders_limit($limit,$offset){
+            
+            $con = $this->connect();
+            $sql = "SELECT * FROM orders
+                 ORDER BY order_id Limit {$limit} offset {$offset}";
+            $result = $con->query($sql);
+            $res = $result->fetch_all(MYSQLI_ASSOC);
+            return $res;
+        }
+     } 
 
         
  ?>

@@ -43,6 +43,10 @@ class Product extends Database {
     public function get_order_list(){
         return $this->orders_list();
     }
+
+    public function get_order_limit($limit,$offset){
+        return $this->orders_limit($limit,$offset);
+    }
 }
 
 ?>
