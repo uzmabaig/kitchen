@@ -47,6 +47,11 @@ class Product extends Database {
     public function get_order_limit($limit,$offset){
         return $this->orders_limit($limit,$offset);
     }
+
+    public function update_products_for_api($id,$data){
+        return $this->update_products($id,$data); 
+    }
+
 }
 
 ?>

@@ -39,7 +39,7 @@
   <script>
    $.ajax({
         type :'GET',
-        url: 'http://localhost/kitchen/api/products.php?offset=5',
+        url: 'http://localhost/kitchen/api/products.php',
         success: function(data){
            data = JSON.parse(data);
           tableBody = $('table > tbody');

@@ -28,7 +28,7 @@ class Database {
 
         }
         
-         public function products_save($data){
+        public function products_save($data){
             
             $con = $this->connect();
             $sql = "INSERT into products values (null,'{$data['name']}','{$data['description']}','{$data['price']}','{$data['image']}','{$data['date']}')";
@@ -145,7 +145,7 @@ class Database {
 
         }
 
-        public function orders_list(){
+        public function orders_list(){ //for api
             
             $con = $this->connect();
             $sql = "SELECT * FROM orders
@@ -156,7 +156,7 @@ class Database {
         }
          
       
-        public function orders_limit($limit,$offset){
+        public function orders_limit($limit,$offset){ //for api
             
             $con = $this->connect();
             $sql = "SELECT * FROM orders
@@ -165,6 +165,18 @@ class Database {
             $res = $result->fetch_all(MYSQLI_ASSOC);
             return $res;
         }
+
+        public function update_products($id,$data){
+            
+            $con = $this->connect();
+            $sql = "UPDATE products SET name ='".$data['name']."' , description = '".$data['description']."' , price = {$data['price']} , image = 'image' WHERE product_id= {$id}";
+            $result = $con->query($sql);
+            return $result;
+        }
+
+       
+
+       
      } 
 
         
