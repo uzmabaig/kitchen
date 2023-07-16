@@ -1,6 +1,6 @@
 <?php
-include 'model/User.php';
 session_start();
+include 'model/User.php';
 
  $msg = "";
  if(isset($_GET['submit'])){

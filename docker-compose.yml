@@ -1,0 +1,27 @@
+version: '3'
+services:
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: docker_db
+      MYSQL_USER: docker_root
+      MYSQL_PASSWORD: root
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+    networks:
+      - lamp_docker
+    ports:
+      - 8001:3306
+  www:
+    # image: php:apache
+    build: 
+      dockerfile: Dockerfile
+    volumes:
+      - './:/var/www/html'
+    ports:
+      - 80:80
+      - 443:443
+    networks:
+      - lamp_docker
+networks:
+  lamp_docker:
+    driver: bridge
