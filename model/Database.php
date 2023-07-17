@@ -54,7 +54,7 @@ class Database {
             return $res;
         }
        
-        public function products_productdel($id){
+        public function products_del($id){
             
             $con = $this->connect();
             $sql = "delete from products Where product_id= {$id}";
@@ -62,7 +62,7 @@ class Database {
             return $result;
         }
 
-        public function products_productupdate($id,$details){
+        public function products_update($id,$details){
             
             $con = $this->connect();
             $sql = "UPDATE products SET name ='".$details['name']."' , description = '".$details['description']."' , price = {$details['price']} , image = '".$details['image']."' WHERE product_id= {$id}";
@@ -145,18 +145,7 @@ class Database {
 
         }
 
-        public function orders_list(){ //for api
-            
-            $con = $this->connect();
-            $sql = "SELECT * FROM orders
-                     ORDER BY order_id DESC Limit 10";
-            $result = $con->query($sql);
-            $res = $result->fetch_all(MYSQLI_ASSOC);
-            return $res;
-        }
-         
-      
-        public function orders_limit($limit,$offset){ //for api
+       public function orders_list($limit = 10,$offset = 0){ //for api
             
             $con = $this->connect();
             $sql = "SELECT * FROM orders
@@ -166,18 +155,16 @@ class Database {
             return $res;
         }
 
-        public function update_products($id,$data){
+        public function products_list(){ //for api
             
             $con = $this->connect();
-            $sql = "UPDATE products SET name ='".$data['name']."' , description = '".$data['description']."' , price = {$data['price']} , image = 'image' WHERE product_id= {$id}";
+            $sql = "SELECT * FROM products
+                 ORDER BY product_id Limit 10";
             $result = $con->query($sql);
-            return $result;
+            $res = $result->fetch_all(MYSQLI_ASSOC);
+            return $res;
         }
-
-       
-
-       
-     } 
+    } 
 
         
  ?>

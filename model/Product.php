@@ -14,11 +14,11 @@ class Product extends Database {
         return $this->products_productinfo($id); 
     }
     public function delete_product_by_id($id){
-        return $this->products_productdel($id); 
+        return $this->products_del($id); 
     }
 
     public function update_product_by_id($id,$details){
-        return $this->products_productupdate($id,$details); 
+        return $this->products_update($id,$details); 
     }
 
     public function add_order($data){
@@ -38,18 +38,14 @@ class Product extends Database {
 
     public function delete_order($id){
       return $this->order_del($id); 
-    }  
-    
-    public function get_order_list(){
-        return $this->orders_list();
+    } 
+
+    public function get_order_list($limit,$offset){
+        return $this->orders_list($limit,$offset);
     }
 
-    public function get_order_limit($limit,$offset){
-        return $this->orders_limit($limit,$offset);
-    }
-
-    public function update_products_for_api($id,$data){
-        return $this->update_products($id,$data); 
+    public function get_product_list(){
+        return $this->products_list();
     }
 
 }
