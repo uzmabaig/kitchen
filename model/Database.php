@@ -159,7 +159,7 @@ class Database {
             
             $con = $this->connect();
             $sql = "SELECT * FROM products
-                 ORDER BY product_id Limit 10";
+                 ORDER BY product_id Limit 15";
             $result = $con->query($sql);
             $res = $result->fetch_all(MYSQLI_ASSOC);
             return $res;

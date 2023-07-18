@@ -10,32 +10,32 @@ $data = [
   'description' =>$_POST['description'],
   'price' =>$_POST['price'],
    ];
+  
 
-   $data = $_GET;
 if($data['name'] == '' || !preg_match('/[a-zA-Z ]/',$data['name'])){
-   echo 'Please enter valid name';
-   return false;
- } 
- if($data['description'] == ''){
+ echo 'Please enter valid name';
+ return false;
+  } 
+  
+if($data['description'] == ''){
    echo 'Please enter the product description';
    return false;
             
-}elseif
+  }elseif
   (str_word_count($data['description']) > 100 ){
-  echo 'you can use only 100 words to describe product in detail';
   return false;
-} 
+  } 
 
 if($data['price'] == ''){
    echo 'Please enter the product price';
   return false;
-}elseif
+  }elseif
   ($data['price'] >= 100000){
    echo 'your price of product should be under 5 digits';
    return false;
-}
+  }
 
-
+  
 $data['image'] ='image';
 $data['date']= date('y-m-d H:i:s');
 $add_products= $product->add($data);
