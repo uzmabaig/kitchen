@@ -48,6 +48,10 @@ class Product extends Database {
         return $this->products_list();
     }
 
+    public function update_order_by_id($id,$details){
+        return $this->orders_update($id,$details); 
+    }
+
 }
 
 ?>

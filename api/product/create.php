@@ -33,18 +33,24 @@ if($data['price'] == ''){
   ($data['price'] >= 100000){
    echo 'your price of product should be under 5 digits';
    return false;
+
+  }else{
+    http_response_code(403);
   }
 
   
 $data['image'] ='image';
 $data['date']= date('y-m-d H:i:s');
 $add_products= $product->add($data);
-http_response_code(200);
-echo json_encode($add_products);
 
-}else {
-  http_response_code(500);
-  echo json_encode(['result' => 'Request Type Error']);
-}
+if($add_products == true){
+  http_response_code(200);
+  echo json_encode(['result' => 'Successfully Created']);
+  }
+
+ }else{
+    http_response_code(400);
+    echo json_encode(['result' => 'Request Type Error']);
+ }
 
  ?>

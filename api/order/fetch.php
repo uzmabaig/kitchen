@@ -12,13 +12,15 @@ if($_SERVER['REQUEST_METHOD'] === 'GET'){
       $offset = ($page * $limit) - $limit;
      }
     $order_data = $product->get_order_list($limit,$offset);
-    http_response_code(200);
-    echo json_encode($order_data);
-
- 
-} else {
-   http_response_code(500);
-   echo json_encode(['result' => 'Request Type Error']);
-}
+    if($order_data == true){
+      http_response_code(200);
+      echo json_encode(['result' => 'Successfully Get Orders']). '</br>';
+      echo json_encode($order_data);
+      }
+    
+     }else{
+        http_response_code(400);
+        echo json_encode(['result' => 'Request Type Error']);
+     }
 
    ?>

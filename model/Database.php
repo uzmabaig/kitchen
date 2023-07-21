@@ -164,6 +164,14 @@ class Database {
             $res = $result->fetch_all(MYSQLI_ASSOC);
             return $res;
         }
+
+        public function orders_update($id,$details){
+            
+            $con = $this->connect();
+            $sql = "UPDATE orders SET product_id ='".$details['product_id']."' , user_id = '".$details['user_id']."' , qty = '".$details['qty']."' , status = '".$details['status']."' WHERE order_id= {$id}";
+            $result = $con->query($sql);
+            return $result;
+        }
     } 
 
         
