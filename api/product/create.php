@@ -4,46 +4,39 @@ include '../../model/Product.php';
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 $product = new Product();
-
-$data = [
-  'name' =>$_POST['name'],
-  'description' =>$_POST['description'],
-  'price' =>$_POST['price'],
-   ];
-  
-
-if($data['name'] == '' || !preg_match('/[a-zA-Z ]/',$data['name'])){
- echo 'Please enter valid name';
- return false;
+$error = [];
+$data = $_POST;
+  if(!isset($data['name']) || $data['name'] === '' || !preg_match('/[a-zA-Z ]/',$data['name'])){
+    $error['name'] ='Please enter valid name';
   } 
   
-if($data['description'] == ''){
-   echo 'Please enter the product description';
-   return false;
-            
+  if(!isset($data['description']) ||$data['description'] === ''){
+    $error['description'] ='Please enter valid description';
+
   }elseif
   (str_word_count($data['description']) > 100 ){
-  return false;
+    $error['description'] = 'you can use only 100 words to describe product in detail';
   } 
 
-if($data['price'] == ''){
-   echo 'Please enter the product price';
-  return false;
+  if(!isset($data['price']) || $data['price'] === ''){
+    $error['price'] ='Please enter valid price';
+    
   }elseif
-  ($data['price'] >= 100000){
-   echo 'your price of product should be under 5 digits';
-   return false;
-
-  }else{
-    http_response_code(403);
+    ($data['price'] >= 100000){
+      $error['price'] ='your price of product should be under 5 digits';
+    
   }
+  if(!empty($error)){
+    http_response_code(403);
+    echo json_encode($error);
+    return false;
+    }
 
-  
-$data['image'] ='image';
-$data['date']= date('y-m-d H:i:s');
-$add_products= $product->add($data);
+  $data['image'] ='image';
+  $data['date']= date('y-m-d H:i:s');
+  $add_products= $product->add($data);
 
-if($add_products == true){
+if($add_products === true){
   http_response_code(200);
   echo json_encode(['result' => 'Successfully Created']);
   }

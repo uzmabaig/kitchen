@@ -9,7 +9,6 @@ if($_SERVER['REQUEST_METHOD'] === 'GET'){
    
    if($product_data == true){
       http_response_code(200);
-      echo json_encode(['result' => 'Successfully Get Products']). '</br>';
       echo json_encode($product_data);
       }
     

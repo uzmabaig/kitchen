@@ -19,6 +19,7 @@
 <body>
 <div class="container">
    <div class="row mt-4">
+   <form action="api.php" method="GET" id="form">
    <table class="table">
   <thead>
     <tr>
@@ -34,12 +35,36 @@
 
   </tbody>
   </table> 
+  <nav aria-label="...">
+  <ul class="pagination pagination-sm">
+  <li class="page-item">
+      <a class="page-link" href="http://localhost/kitchen/api/order/fetch.php?page=1" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link" href="http://localhost/kitchen/api/order/fetch.php?page=2">2</a></li>
+    <li class="page-item"><a class="page-link" href="http://localhost/kitchen/api/order/fetch.php?page=3">3</a></li>
+    <li class="page-item"><a class="page-link" href="http://localhost/kitchen/api/order/fetch.php?page=4">4</a></li>
+   <li class="page-item"><a class="page-link" href="http://localhost/kitchen/api/order/fetch.php?page=5">5</a></li>
+    <li class="page-item"><a class="page-link" href="http://localhost/kitchen/api/order/fetch.php?page=6">6</a></li>
+    <li class="page-item">
+      <a class="page-link" href="http://localhost/kitchen/api/order/fetch.php?page=7" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+   
+    
+
+  </ul>
+
+</nav>
+</form>
   </body>
 
   <script>
    $.ajax({
         type :'GET',
-        url: 'http://localhost/kitchen/api/products.php',
+        url: 'http://localhost/kitchen/api/order/fetch.php?page=1',
         success: function(data){
            data = JSON.parse(data);
           tableBody = $('table > tbody');

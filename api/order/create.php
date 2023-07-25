@@ -3,63 +3,59 @@
 include '../../model/Product.php'; 
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
+  $errors= array();
+  
 $product = new Product();
+ $error = [];
 
-$data = [
-    'product_id' => $_POST['product_id'],
-    'user_id' => $_POST["user_id"],
-    'qty' => $_POST['qty'],
-    'status' =>$_POST['status'],
-       ];
-         
-      if($data['product_id'] == ''){
-        echo 'Please enter valid product_id';
-        return false;
+    $data = $_POST;
+
+      if(!isset($data['product_id']) || $data['product_id'] === ""){
+        $error['product_id'] = 'Please enter valid product_id';
+
       }elseif
-        (!preg_match('/[0-9]/',$data['product_id'])){
-        echo 'Please enter product_id in integer form';
-        return false;
+      (!preg_match('/[0-9]/',$data['product_id'])){
+        $error['product_id'] = 'Please enter product_id in integer form';
       }
 
-      if($data['user_id'] == ''){
-        echo 'Please enter valid user_id';
-        return false;
+      if(!isset($data['user_id']) || $data['user_id'] === ''){
+        $error['user_id'] = 'Please enter valid user_id';
+       
       }elseif
         (!preg_match('/[0-9]/',$data['user_id'])){
-        echo 'Please enter user_id in integer form';
-        return false;
-      }
+         $error['user_id'] ='Please enter user_id in integer form';
+       }
 
-      if($data['qty'] == ''){
-        echo 'Please enter quantity';
-        return false;
+      if(!isset($data['qty']) || $data['qty'] === ''){
+        $error['qty'] ='Please enter quantity';
+
       }elseif
         (!preg_match('/[0-9]/',$data['qty'])){
-        echo 'Please enter quantity in integer form';
-        return false;
+         $error['qty'] ='Please enter quantity in integer form';
       }
 
-      if($data['status'] == ''){
-        echo 'Please enter status';
-        return false;
+      if(!isset($data['status']) ||$data['status'] === ''){
+        $error['status'] ='Please enter status';
+      
       }elseif
       (!preg_match('/[a-zA-Z ]/',$data['status'])){
-      echo 'Please enter status in alphabets';
-      return false;
-
-      }else{
+       $error['status'] ='Please enter status in alphabets';
+      }
+ 
+       if(!empty($error)){
         http_response_code(403);
-      } 
+        echo json_encode($error);
+        return false;
+      }
 
     $data['date']= date('y-m-d H:i:s');
     $add_order = $product->add_order($data);
 
-    if($add_order == true){
+    if($add_order === true){
       http_response_code(200);
       echo json_encode(['result' => 'Successfully Created']);
       }
-
-     }else{
+    }else{
       http_response_code(400);
       echo json_encode(['result' => 'Request Type Error']);
       }

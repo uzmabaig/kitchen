@@ -2,7 +2,8 @@
 include '../../model/Product.php';
 
 if($_SERVER['REQUEST_METHOD'] === 'GET'){
-
+   if(isset($_GET['page'])){
+      
    $product = new Product();
    $limit = 5;
    $page = $_GET['page'];
@@ -14,10 +15,9 @@ if($_SERVER['REQUEST_METHOD'] === 'GET'){
     $order_data = $product->get_order_list($limit,$offset);
     if($order_data == true){
       http_response_code(200);
-      echo json_encode(['result' => 'Successfully Get Orders']). '</br>';
       echo json_encode($order_data);
       }
-    
+   }
      }else{
         http_response_code(400);
         echo json_encode(['result' => 'Request Type Error']);
